@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/anuncios"
+            android:icon="@drawable/anuncios"
+            android:title="Anuncios" />
+        <item
+            android:id="@+id/publicar_anuncio"
+            android:icon="@android:drawable/ic_menu_upload"
+            android:title="Publicar Anuncio" />
+        <item
+            android:id="@+id/buscar_vet"
+            android:icon="@drawable/vet"
+            android:title="Buscar Veterinario" />
+        <item
+            android:id="@+id/scan_cod"
+            android:icon="@drawable/scan"
+            android:title="Escanear Código" />
+
+        <item
+            android:id="@+id/mi_cuenta"
+            android:icon="@drawable/cuenta"
+            android:title="Mi Cuenta" />
+    </group>
+
+</menu>

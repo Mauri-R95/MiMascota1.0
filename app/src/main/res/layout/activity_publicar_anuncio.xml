@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.mauri_r95.mimascota10.PublicarAnuncioActivity"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.mauri_r95.mimascota10.PublicarAnuncioActivity"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.36">
+
+                <ImageView
+                    android:id="@+id/img_mas"
+                    android:layout_width="227dp"
+                    android:layout_height="157dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="-2dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_menu_gallery"
+                    tools:layout_editor_absoluteX="149dp"
+                    tools:layout_editor_absoluteY="11dp" />
+
+                <ImageButton
+                    android:id="@+id/img_up_mas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="0.36"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.571"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/img_user"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.536"
+                    app:srcCompat="@android:drawable/ic_menu_upload" />
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+
+        <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/nombre_t"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Nombre Mascota"
+            android:textColor="@color/colorAccent"
+            android:textStyle="italic"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_user" />
+
+        <EditText
+            android:id="@+id/nombre_eT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:hint="Nombre Mascota"
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Escriba al menos 5 caracteres"
+            android:textSize="8sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"/>
+
+    <LinearLayout
+        android:id="@+id/la_categ"
+        android:clickable="true"
+        android:background="?attr/selectableItemBackground"
+        android:layout_width="fill_parent"
+        android:layout_height="41dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoria"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/categ"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Categoria" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageButton2"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_pressed"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/ic_menu_send" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sexo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:layout_weight="0.02"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/macho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.53"
+                android:background="@drawable/boton_redondo"
+                android:text="Macho"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/hembra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.53"
+                android:background="@drawable/boton_red_gris"
+                android:text="Hembra"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+    <LinearLayout
+        android:id="@+id/la_tip"
+        android:layout_width="fill_parent"
+        android:layout_height="43dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo de Mascota"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/tip_masc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo de Mascota" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageButton3"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_pressed"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/ic_menu_send" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+        <LinearLayout
+        android:id="@+id/la_raza"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/raza_tex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Raza"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/Raza_pub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Raza" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageButton3"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_pressed"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/ic_menu_send" />
+
+    </LinearLayout>
+
+        <View
+            android:id="@+id/view_raza_pub"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+    <LinearLayout
+        android:id="@+id/la_tam"
+        android:clickable="true"
+        android:background="?attr/selectableItemBackground"
+        android:layout_width="fill_parent"
+        android:layout_height="39dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tamaño"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/tamano_publ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tamaño" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageButton3"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_pressed"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/ic_menu_send" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_tam_pub"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+        <LinearLayout
+            android:id="@+id/la_nac"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nac_tex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha de nacimiento"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/nac_pub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha de nacimiento" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageButton3"
+                android:layout_width="73dp"
+                android:layout_height="match_parent"
+                android:background="@color/common_google_signin_btn_text_dark_pressed"
+                android:elevation="0dp"
+                app:srcCompat="@drawable/ic_menu_send" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+        <LinearLayout
+        android:id="@+id/la_com"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comuna"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/comuna_publ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comuna" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageButton3"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_pressed"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/ic_menu_send" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Descripción"
+            android:textColor="@color/colorAccent"
+            android:textStyle="italic"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_user" />
+
+        <EditText
+            android:id="@+id/desc_eT"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:hint="Descripción"
+            android:inputType="textPersonName"
+            android:textAlignment="viewStart"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"/>
+
+    <Button
+        android:id="@+id/publicar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_redondo"
+        android:text="Publicar" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Mi Mascota</string>
+    <string name="title_activity_main">Anuncios</string>
+    <string name="login">Entrar</string>
+    <string name="registrar">Registrarse</string>
+    <string name="publicar_anuncio">Publicar Anuncio</string>
+    <string name="categoria">Categoría</string>
+    <string name="tipo_mascota">Tipo de Mascota</string>
+    <string name="tamano">Tamaño</string>
+    <string name="comuna">Comuna</string>
+    <string name="provincia">Provincia</string>
+    <string name="raza">Raza</string>
+    <string name="region">Región</string>
+    <string name="mascota">Mascota</string>
+    <string name="mi_cuenta">Mi Cuenta</string>
+    <string name="favorito">Favorito</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="buscar">Buscar</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

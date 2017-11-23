@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mauri_r95.mimascota10.BuscarActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:id="@+id/li_categ_b"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoria"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/categ_b"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Categoria" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageButton2"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_pressed"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/ic_menu_send" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.02"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.53"
+                android:text="Sexo" />
+
+            <Switch
+                android:id="@+id/switch_sexo_b"
+                android:layout_width="78dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:layout_weight="0.02"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/macho_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.53"
+                android:background="@drawable/boton_redondo"
+                android:text="Macho"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/hembra_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.53"
+                android:background="@drawable/boton_red_gris"
+                android:text="Hembra"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view9"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+    <LinearLayout
+        android:id="@+id/li_tip_b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.10"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo de Mascota"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/tip_masc_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tipo de Mascota" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageButton3"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_pressed"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/ic_menu_send" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view11"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+    <LinearLayout
+        android:id="@+id/li_raza_b"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_weight="0.09"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/raza_tex_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Raza"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/Raza_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Raza" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageButton3"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_pressed"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/ic_menu_send" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_raza_b"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+    <LinearLayout
+        android:id="@+id/li_tam_b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.07"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tamaño"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/tamano_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tamaño" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageButton3"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_pressed"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/ic_menu_send" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_tam_b"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+    <LinearLayout
+        android:id="@+id/li_edad_b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.08"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/edad_text_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edad"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/edad_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edad" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageButton3"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_pressed"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/ic_menu_send" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view14"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+    <LinearLayout
+        android:id="@+id/li_com_b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.05"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comuna"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/comuna_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comuna" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageButton3"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_dark_pressed"
+            android:elevation="0dp"
+            app:srcCompat="@drawable/ic_menu_send" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view15"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+    <Button
+        android:id="@+id/btn_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_redondo"
+        android:text="Buscar" />
+
+</LinearLayout>
