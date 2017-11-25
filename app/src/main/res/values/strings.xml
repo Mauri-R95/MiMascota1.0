@@ -4,7 +4,7 @@
     <string name="login">Entrar</string>
     <string name="registrar">Registrarse</string>
     <string name="publicar_anuncio">Publicar Anuncio</string>
-    <string name="categoria">Categoría</string>
+    <string name="categoria">Categoria</string>
     <string name="tipo_mascota">Tipo de Mascota</string>
     <string name="tamano">Tamaño</string>
     <string name="comuna">Comuna</string>
@@ -14,6 +14,7 @@
     <string name="mascota">Mascota</string>
     <string name="mi_cuenta">Mi Cuenta</string>
     <string name="favorito">Favorito</string>
+    <string name="tipo_de_ave">Tipo de Ave</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

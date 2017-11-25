@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = "", pass= "";
+                String email, pass;
                 email = emailEdit.getText().toString();
                 pass = passEdit.getText().toString();
                 if (!email.isEmpty() || !pass.isEmpty()) {
@@ -56,13 +56,12 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
                                 finish();
                                 Toast.makeText(getApplicationContext(), "Sesión iniciada correctamente", Toast.LENGTH_LONG).show();
                             } else {
-                                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Formato de email erroneo" , Toast.LENGTH_LONG).show();
                             }
 
                         }

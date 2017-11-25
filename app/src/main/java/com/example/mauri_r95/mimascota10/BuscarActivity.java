@@ -2,6 +2,7 @@ package com.example.mauri_r95.mimascota10;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -53,8 +54,8 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
         li_tam = (LinearLayout)findViewById(R.id.li_tam_b);
         //li_edad = (LinearLayout)findViewById(R.id.li_edad_b);
         li_com = (LinearLayout)findViewById(R.id.li_com_b);
-        v_raza = (View)findViewById(R.id.v_raza_b);
-        v_tam = (View)findViewById(R.id.v_tam_b);
+        v_raza = findViewById(R.id.v_raza_b);
+        v_tam = findViewById(R.id.v_tam_b);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null){
@@ -78,12 +79,12 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
             v_tam.setVisibility(View.VISIBLE);
             li_raza.setVisibility(View.VISIBLE);
             v_raza.setVisibility(View.VISIBLE);
-            raza_tex.setText("Raza");
+            raza_tex.setText(R.string.raza);
 
         }else if (tip_mas.getText().toString().equals("Ave")){
             li_tam.setVisibility(View.GONE);
             v_tam.setVisibility(View.GONE);
-            raza_tex.setText("Tipo de Ave");
+            raza_tex.setText(R.string.tipo_de_ave);
             li_raza.setVisibility(View.VISIBLE);
             v_raza.setVisibility(View.VISIBLE);
         }else{
@@ -216,6 +217,7 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
             macho.setBackground(getDrawable(R.drawable.boton_redondo));
             macho.setTextColor(Color.BLACK);
             hembra.setBackground(getDrawable(R.drawable.boton_red_gris));
+
             hembra.setTextColor(Color.WHITE);
             sexo_st = macho.getText().toString();
             statesex = true;
@@ -255,18 +257,18 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if( id == R.id.editar_mascota){
-            categoria.setText("Categoria");
+            categoria.setText(R.string.categoria);
             sexo_s.setChecked(false);
             getSexo(true);
-            tip_mas.setText("Tipo de Mascota");
+            tip_mas.setText(R.string.tipo_mascota);
             li_tam.setVisibility(View.GONE);
             v_tam.setVisibility(View.GONE);
             li_raza.setVisibility(View.GONE);
             v_raza.setVisibility(View.GONE);
-            raza_tex.setText("Raza");
-            raza.setText("Raza");
-            tamano.setText("Tamaño");
-            comuna.setText("Comuna");
+            raza_tex.setText(R.string.raza);
+            raza.setText(R.string.raza);
+            tamano.setText(R.string.tamano);
+            comuna.setText(R.string.comuna);
 
 
 
