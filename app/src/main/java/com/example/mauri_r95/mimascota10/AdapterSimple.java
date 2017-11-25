@@ -22,7 +22,7 @@ public class AdapterSimple extends RecyclerView.Adapter<AdapterSimple.AdapterSim
     private Context c;
     private View.OnClickListener listener;
 
-    private AdapterSimple(Context c, List<String> list) {
+    public AdapterSimple(Context c, List<String> list) {
         this.c = c;
         this.list = list;
     }
@@ -72,7 +72,7 @@ public class AdapterSimple extends RecyclerView.Adapter<AdapterSimple.AdapterSim
         TextView textView;
 
 
-        private AdapterSimpleViewHolder(View itemView) {
+        public AdapterSimpleViewHolder(View itemView) {
             super(itemView);
 
             textView = (TextView)itemView.findViewById(R.id.text_r_simple);
