@@ -1,13 +1,11 @@
 package com.example.mauri_r95.mimascota10;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.mauri_r95.mimascota10.Modelos.Mascota;
 import com.google.firebase.database.DataSnapshot;
@@ -120,11 +118,10 @@ public class TipoMascotaActivity extends AppCompatActivity {
                     String mas_key = extras.getString("key"); //
                     mascota.setTipo(tiposMascotas.get(recyclerView.getChildAdapterPosition(v)).toString());
 
-                    Intent intent = new Intent(TipoMascotaActivity.this, PublicarAnuncioActivity.class);
+                    Intent intent = new Intent(TipoMascotaActivity.this, PubAnuncioActivity.class);
                     intent.putExtra("key", mas_key);
                     intent.putExtra("activity", activity);
                     intent.putExtra("imagen_nom", imagen_nom);
-                    intent.putExtra("sexo", statesex);
                     intent.putExtra("cat_get", cat_get);
                     if (mascota.getTipo().equals("Perro")){
                         mascota.setRaza("Raza");

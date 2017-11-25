@@ -20,8 +20,8 @@ import com.bumptech.glide.Glide;
 public class SplashActivity extends Activity{
 
     private ImageView imageView;
-    private String logo = "https://firebasestorage.googleapis.com/v0/b/mi-mascota-a6900.appspot.com/o/logo.png?alt=media&token=0d5db17d-9dc9-43ef-b7ac-090cf1a2629e";
-    private int time_spash = 2000;
+    private final String logo = "https://firebasestorage.googleapis.com/v0/b/mi-mascota-a6900.appspot.com/o/logo.png?alt=media&token=0d5db17d-9dc9-43ef-b7ac-090cf1a2629e";
+    private final int time_spash = 2000;
 
 
     @Override

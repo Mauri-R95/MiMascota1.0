@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.mauri_r95.mimascota10.Modelos.Mascota;
 import com.example.mauri_r95.mimascota10.Modelos.Usuario;
@@ -75,7 +74,7 @@ public class ComunaActivity extends AppCompatActivity {
                 Bundle extras = getIntent().getExtras();
                 String activity = extras.getString("activity");
                 Boolean statesex = extras.getBoolean("sexo");
-                Intent intent = new Intent(ComunaActivity.this, PublicarAnuncioActivity.class);
+                Intent intent = new Intent(ComunaActivity.this, PubAnuncioActivity.class);
                 Intent intent1 = new Intent(ComunaActivity.this, EditarCuentaActivity.class);
                 Intent intent2 = new Intent(ComunaActivity.this, BuscarActivity.class);
                 if(extras.getParcelable("usuario") != null){
@@ -128,7 +127,6 @@ public class ComunaActivity extends AppCompatActivity {
                     intent.putExtra("activity", activity);
                     intent.putExtra("mascota", mascota);
                     intent.putExtra("imagen_nom", imagen_nom);
-                    intent.putExtra("sexo", statesex);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }

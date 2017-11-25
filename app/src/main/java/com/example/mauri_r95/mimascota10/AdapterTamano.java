@@ -48,7 +48,7 @@ public class AdapterTamano extends RecyclerView.Adapter<AdapterTamano.TamanoView
         holder.nombreT.setText(tamano.getNombre());
         holder.abrevT.setText(tamano.getAbrev());
         holder.pesoT.setText("Peso: " + tamano.getPeso());
-        holder.Imagen_URL(tamano.getImagen());
+        holder.imagenURL(tamano.getImagen());
     }
 
     @Override
@@ -80,7 +80,7 @@ public class AdapterTamano extends RecyclerView.Adapter<AdapterTamano.TamanoView
         TextView nombreT, abrevT, pesoT;
         ImageView foto;
 
-        public TamanoViewHolder(View itemView) {
+        TamanoViewHolder(View itemView) {
             super(itemView);
             nombreT = (TextView)itemView.findViewById(R.id.nombre_item);
             abrevT = (TextView)itemView.findViewById(R.id.fecha_item);
@@ -88,8 +88,11 @@ public class AdapterTamano extends RecyclerView.Adapter<AdapterTamano.TamanoView
             foto = (ImageView)itemView.findViewById(R.id.img_raza_item);
 
         }
-
-        private void Imagen_URL(String title){
+        /**
+         * Metodo para cargar imagen al ImageView
+         * @param title direccion de la imagen de firebase
+         */
+        private void imagenURL(String title){
             Glide.with(itemView.getContext())
                     .load(title)
                     .crossFade()

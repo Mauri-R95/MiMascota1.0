@@ -75,7 +75,7 @@ public class MiCuentaActivity extends AppCompatActivity {
                                 .centerCrop()
                                 .into(imagen);
                         nombre.setText(usuario.getNombre().toString());
-                        if(!usuario.getComuna().equals("")){
+                        if(usuario.getComuna().length() != 0){
                             ubicacion.setText(usuario.getComuna().toString());
                         }else{
                             ubicacion.setText("No Especificado");
@@ -183,6 +183,10 @@ public class MiCuentaActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Metodo para pasar a MisActivity
+     * @param activity Variable para colocar titulo en la siguiente actividad
+     */
     private void misActivity(String activity){
         Intent intent = new Intent(MiCuentaActivity.this, MisActivity.class);
         intent.putExtra("activity", activity);

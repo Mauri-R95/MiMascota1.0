@@ -23,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.mauri_r95.mimascota10.Modelos.Favoritos;
 import com.example.mauri_r95.mimascota10.Modelos.Mascota;
 import com.example.mauri_r95.mimascota10.Modelos.Usuario;
 import com.google.firebase.auth.FirebaseAuth;
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onClick(View view) {
-                AgregarMascota();
+                agregarMascota();
 
             }
         });
@@ -285,13 +284,13 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.anuncios) {
 
         } else if (id == R.id.publicar_anuncio) {
-            AgregarMascota();
+            agregarMascota();
         } else if (id == R.id.buscar_vet) {
 
         } else if (id == R.id.scan_cod) {
 
         } else if (id == R.id.mi_cuenta) {
-            MiCuenta();
+            miCuenta();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -300,10 +299,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     //VERIFICA SI HA INICIADO SESION ANTES DE AGREGAR UNA MASCOTA
-    public void AgregarMascota (){
+    public void agregarMascota(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            Intent intent = new Intent(MainActivity.this, PublicarAnuncioActivity.class);
+            Intent intent = new Intent(MainActivity.this, PubAnuncioActivity.class);
             intent.putExtra("activity", "main");
             intent.putExtra("1", "primero");
             intent.putExtra("email", emailS);
@@ -317,7 +316,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     //VERIFICA SI HA INICIADO SESION ANTES DE INGRESAR A MI CUENTA
-    public void MiCuenta (){
+    public void miCuenta(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null){
             Intent intent = new Intent(MainActivity.this, MiCuentaActivity.class);

@@ -2,7 +2,9 @@ package com.example.mauri_r95.mimascota10;
 
 
 public class FirebaseReference {
-
+    /**
+     * Referencias mas usadas
+     */
     final public static String ref_usuarios = "usuarios";
     final public static String ref_mascotas = "mascotas";
     final public static String ref_categoria = "categoria";

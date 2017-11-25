@@ -43,7 +43,7 @@
             android:name=".RegistrarActivity"
             android:label="@string/registrar" />
         <activity
-            android:name=".PublicarAnuncioActivity"
+            android:name=".PubAnuncioActivity"
             android:label="@string/publicar_anuncio" />
         <activity
             android:name=".CategoriaActivity"

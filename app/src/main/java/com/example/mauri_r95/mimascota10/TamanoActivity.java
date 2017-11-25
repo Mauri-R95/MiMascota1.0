@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.mauri_r95.mimascota10.Modelos.Mascota;
 import com.example.mauri_r95.mimascota10.Modelos.Tamano;
@@ -102,14 +101,13 @@ public class TamanoActivity extends AppCompatActivity {
                     String imagen_nom = extras.getString("imagen_nom");
                     mascota.setTamano(tamano.getNombre());
 
-                    Intent intent = new Intent(TamanoActivity.this, PublicarAnuncioActivity.class);
+                    Intent intent = new Intent(TamanoActivity.this, PubAnuncioActivity.class);
                     intent.putExtra("1", "segundo");
                     intent.putExtra("cat_get", cat_get);
                     intent.putExtra("key", mas_key);
                     intent.putExtra("activity", activity);
                     intent.putExtra("mascota", mascota);
                     intent.putExtra("imagen_nom", imagen_nom);
-                    intent.putExtra("sexo", statesex);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();

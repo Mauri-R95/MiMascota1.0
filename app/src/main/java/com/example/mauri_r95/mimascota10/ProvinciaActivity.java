@@ -125,7 +125,6 @@ public class ProvinciaActivity extends AppCompatActivity {
                     intent.putExtra("mascota", mascota);
                     intent.putExtra("1", "segundo");
                     intent.putExtra("imagen_nom", imagen_nom);
-                    intent.putExtra("sexo", statesex);
                 }
                 String provincia = provincias.get(recyclerView.getChildAdapterPosition(v)).toString();
                 intent.putExtra("provincia", provincia);

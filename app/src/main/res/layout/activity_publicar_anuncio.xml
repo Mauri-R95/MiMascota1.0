@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.mauri_r95.mimascota10.PublicarAnuncioActivity"
+    tools:context="com.example.mauri_r95.mimascota10.PubAnuncioActivity"
     android:weightSum="1">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.example.mauri_r95.mimascota10.PublicarAnuncioActivity"
+        tools:context="com.example.mauri_r95.mimascota10.PubAnuncioActivity"
         android:weightSum="1">
 
         <LinearLayout

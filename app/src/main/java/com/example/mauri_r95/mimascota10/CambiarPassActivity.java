@@ -57,7 +57,7 @@ public class CambiarPassActivity extends AppCompatActivity {
                                         if(task.isSuccessful()){
                                             dialog.dismiss();
                                             Toast.makeText(getApplicationContext(), "Clave cambiada exitosamente",Toast.LENGTH_SHORT).show();
-                                            auth.signOut();;
+                                            auth.signOut();
                                             Intent intent = new Intent(CambiarPassActivity.this, EditarCuentaActivity.class);
                                             intent.putExtra("usuario", usuario);
                                             startActivity(intent);

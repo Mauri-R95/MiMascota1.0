@@ -79,7 +79,7 @@ public class EditarCuentaActivity extends AppCompatActivity {
             usuario = extras.getParcelable("usuario");
             key_user = extras.getString("user");
             if(extras.getString("1").equals("primero")){
-                imagen_nom = usuario.getImagen_nom();
+                imagen_nom = usuario.getImagenNom();
             }else{
                 imagen_nom = extras.getString("imagen_nom");
             }
@@ -143,7 +143,7 @@ public class EditarCuentaActivity extends AppCompatActivity {
         guardar_Edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!usuario.getImagen_nom().equals("sas.png")) {
+                if(!usuario.getImagenNom().equals("sas.png")) {
                     if (!nombre.getText().toString().isEmpty()) {
                         usuario.setNombre(nombre.getText().toString());
                         if (!telefono.getText().toString().isEmpty()) {
@@ -153,7 +153,7 @@ public class EditarCuentaActivity extends AppCompatActivity {
                                 dialog.show();
                                 reference.child(FirebaseReference.ref_usuarios)
                                         .child(key_user).setValue(usuario);
-                                if(!usuario.getImagen_nom().equals("sas.png") || !usuario.getImagen_nom().equals(imagen_nom)){
+                                if(!usuario.getImagenNom().equals("sas.png") || !usuario.getImagenNom().equals(imagen_nom)){
                                     storage.child("usuarios").child(imagen_nom).delete();
                                 }
                                 dialog.dismiss();
@@ -196,8 +196,8 @@ public class EditarCuentaActivity extends AppCompatActivity {
 
             StorageReference filePath = storage.child("usuarios").child(urif.getLastPathSegment());
             //publicar.setOn
-            if(!usuario.getImagen_nom().equals("sas.png") && state_imagen && !usuario.getImagen_nom().equals(imagen_nom)){
-                storage.child("usuarios").child(usuario.getImagen_nom()).delete();
+            if(!usuario.getImagenNom().equals("sas.png") && state_imagen && !usuario.getImagenNom().equals(imagen_nom)){
+                storage.child("usuarios").child(usuario.getImagenNom()).delete();
             }
             filePath.putFile(urif).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -205,7 +205,7 @@ public class EditarCuentaActivity extends AppCompatActivity {
                     state_imagen = true;
                     Toast.makeText(getApplicationContext(), "Se subio exitosamente", Toast.LENGTH_LONG).show();
                     Uri descargarFoto = taskSnapshot.getDownloadUrl();
-                    usuario.setImagen_nom(urif.getLastPathSegment());
+                    usuario.setImagenNom(urif.getLastPathSegment());
                     usuario.setImagen(String.valueOf(descargarFoto));
                     Glide.with(EditarCuentaActivity.this)
                             .load(descargarFoto) //cargar el link
@@ -223,8 +223,8 @@ public class EditarCuentaActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(!usuario.getImagen_nom().equals("sas.png") || !usuario.getImagen_nom().equals(imagen_nom)){
-            storage.child("usuarios").child(usuario.getImagen_nom()).delete();
+        if(!usuario.getImagenNom().equals("sas.png") || !usuario.getImagenNom().equals(imagen_nom)){
+            storage.child("usuarios").child(usuario.getImagenNom()).delete();
         }
         super.onBackPressed();
     }

@@ -122,7 +122,6 @@ public class RegionActivity extends AppCompatActivity {
                     intent.putExtra("key", mas_key);
                     intent.putExtra("activity", activity);
                     intent.putExtra("imagen_nom", imagen_nom);
-                    intent.putExtra("sexo", statesex);
                 }
                 String region = regiones.get(recyclerView.getChildAdapterPosition(v)).toString();
                 intent.putExtra("region", region);

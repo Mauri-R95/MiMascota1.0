@@ -553,17 +553,4 @@ public class MisActivity extends AppCompatActivity {
 
 
     }
-
-    @Override
-    public void onBackPressed() {
-        /*Bundle extras = getIntent().getExtras();
-        if(extras.getString("mod").equals("modificar")) {
-            Intent intent = new Intent(MisActivity.this, MiCuentaActivity.class);
-            intent.putExtra("email", email);
-            intent.putExtra("mod", extras.getString("mod"));
-            startActivity(intent);
-            finish();
-        }*/
-        super.onBackPressed();
-    }
 }

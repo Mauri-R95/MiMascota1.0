@@ -11,22 +11,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mauri_r95.mimascota10.Modelos.Favoritos;
 import com.example.mauri_r95.mimascota10.Modelos.Mascota;
-import com.example.mauri_r95.mimascota10.Modelos.Usuario;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
 /**
  * Created by Mauri_R95 on 04-10-2017.
  * clase que carga la informacion de la mascota
@@ -42,7 +36,6 @@ public class MascotaActivity extends AppCompatActivity  {
     TextView nombre, fecha, fecha_nac, comuna, tip_raz, tip_raz_T, categoria, sexo, tamano, desc;
     LinearLayout li_tam;
     private FirebaseDatabase database;
-    private boolean mas_key_s = false;
     private Favoritos favoritos = new Favoritos();
     private Button btn_fav;
     private Boolean fav = false;
@@ -105,7 +98,7 @@ public class MascotaActivity extends AppCompatActivity  {
         fecha.setText(mascota.getFecha());
         //FECHA DE NACIMIENTO
         fecha_nac = (TextView)findViewById(R.id.fecha_nac);
-        fecha_nac.setText("fecha de nacimiento: " + mascota.getFecha_nac());
+        fecha_nac.setText("fecha de nacimiento: " + mascota.getFechaNac());
         // COMUNA
         comuna = (TextView)findViewById(R.id.text_com_pet);
         comuna.setText(mascota.getComuna());
@@ -141,57 +134,6 @@ public class MascotaActivity extends AppCompatActivity  {
         }else{
             desc.setText(mascota.getDescripcion());
         }
-
-        /*btn_fav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                database = FirebaseDatabase.getInstance();
-                DatabaseReference reference = database.getReference();
-                //VERIFICA SI HA INICIADO SESION ANTES DE AGREGAR A FAVORITOS
-                if (user != null) {
-                    if (!fav) {
-                        fav = true;
-                        btn_fav.setText("Eliminar de Favoritos");
-                        img_fav.setImageDrawable(getResources().getDrawable(R.drawable.favorito_act));
-                        reference.child(FirebaseReference.ref_mis_favoritos).push().setValue(favoritos);
-                        Toast.makeText(getApplicationContext(), "Mascota Agregada a Favoritos", Toast.LENGTH_SHORT).show();
-
-                    }else{
-                        fav = false;
-                        btn_fav.setText("Agregar a Favoritos");
-                        img_fav.setImageDrawable(getResources().getDrawable(R.drawable.favorito_des));
-                        reference.child(FirebaseReference.ref_mis_favoritos).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                    Favoritos favorito2 = ds.getValue(Favoritos.class);
-                                    if (favorito2.getMascota().equals(favoritos.getMascota()) && favorito2.getUsuario().equals(favoritos.getUsuario())) {
-                                        ds.getRef().removeValue();
-                                    }
-                                }
-                            }
-
-                            @Override public void onCancelled(DatabaseError databaseError) {}
-                        });
-                        if(extras.getString("activity").equals("Mis Favoritos")){
-                            Intent intent = new Intent(MascotaActivity.this, MisActivity.class);
-                            intent.putExtra("mis", "Mis Favoritos");
-                            intent.putExtra("email", favoritos.getUsuario());
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            finish();
-                        }
-                        Toast.makeText(getApplicationContext(), "Mascota Eliminada de Favoritos", Toast.LENGTH_SHORT).show();
-                    }
-
-                } else {
-                    Intent intent = new Intent(MascotaActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Debe Iniciar Sesión", Toast.LENGTH_LONG).show();
-                }
-            }
-        });*/
     }
 
     //AGREGAR BOTON AL ACTION BAR
@@ -215,7 +157,7 @@ public class MascotaActivity extends AppCompatActivity  {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.editar_mascota){
-            Intent intent = new Intent(MascotaActivity.this, PublicarAnuncioActivity.class);
+            Intent intent = new Intent(MascotaActivity.this, PubAnuncioActivity.class);
             intent.putExtra("activity", activity);
             intent.putExtra("mascota", mascota);
             intent.putExtra("key", mas_key);
@@ -225,21 +167,6 @@ public class MascotaActivity extends AppCompatActivity  {
 
        // }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        /*Bundle extras = getIntent().getExtras();
-        if (extras.getString("mod").equals("modificar")) {
-            Intent intent = new Intent(MascotaActivity.this, MisActivity.class);
-            intent.putExtra("activity", activity);
-            intent.putExtra("email", favoritos.getUsuario());
-            intent.putExtra("mod", extras.getString("mod"));
-            startActivity(intent);
-            finish();
-        }*/
-
-        super.onBackPressed();
     }
 }
 

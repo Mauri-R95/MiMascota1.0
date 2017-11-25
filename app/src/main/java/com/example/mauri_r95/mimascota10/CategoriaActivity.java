@@ -1,15 +1,11 @@
 package com.example.mauri_r95.mimascota10;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.mauri_r95.mimascota10.Modelos.Mascota;
 import com.google.firebase.database.DataSnapshot;
@@ -117,17 +113,15 @@ public class CategoriaActivity extends AppCompatActivity {
                     String segundo = extras.getString("1"); //
                     Mascota mascota = extras.getParcelable("mascota"); //
                     String mas_key = extras.getString("key"); //
-                    String activity = extras.getString("activity"); //
                     String imagen_nom = extras.getString("imagen_nom");
                     mascota.setCategoria(categorias.get(recyclerView.getChildAdapterPosition(v)).toString());
-                    Intent intent = new Intent(CategoriaActivity.this, PublicarAnuncioActivity.class);
+                    Intent intent = new Intent(CategoriaActivity.this, PubAnuncioActivity.class);
                     intent.putExtra("1", segundo);
                     intent.putExtra("key", mas_key);
                     intent.putExtra("activity", activity);
                     intent.putExtra("mascota", mascota);
                     intent.putExtra("imagen_nom", imagen_nom);
                     intent.putExtra("cat_get", cat_get);
-                    intent.putExtra("sexo", statesex);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();

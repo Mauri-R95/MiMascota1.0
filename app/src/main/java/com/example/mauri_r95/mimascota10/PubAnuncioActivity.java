@@ -1,7 +1,6 @@
 package com.example.mauri_r95.mimascota10;
 
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -44,7 +43,7 @@ import com.google.firebase.storage.UploadTask;
  * @since 1.0
  * @version 1.1 Cambios hechos
  */
-public class PublicarAnuncioActivity extends AppCompatActivity implements View.OnClickListener {
+public class PubAnuncioActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView foto;
     private ImageButton foto_up;
@@ -57,8 +56,8 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
     private String userS, mas_key, cat_get, activity, imagen_nom_res;
     private StorageReference mStorage;
     private static final int GALLERY_INT = 1; //CODIGO QUE UTILIZA LA GALERIA CUANDO APRETEMOS EL BOTON PARA ABRIR LA GALERIA, CODIGO QUE MANEJA INTERNAMENTE
-    private boolean statesex = true, state_nac = false, stateActivity, stateCambio = false, state_imagen = false;
-    private ProgressDialog mProgressDialog;
+    private boolean state_nac = false, stateActivity, stateCambio = false, state_imagen = false;
+    //private ProgressDialog mProgressDialog;
     private FirebaseDatabase database;
     Mascota mascota = new Mascota();
     Uri urif;
@@ -112,14 +111,14 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
                 mas_key = extras.getString("key");
                 mascota = extras.getParcelable("mascota");
                 if (!mascota.getImagen().isEmpty()) {
-                    Glide.with(PublicarAnuncioActivity.this)
+                    Glide.with(PubAnuncioActivity.this)
                             .load(mascota.getImagen()) //cargar el link
                             //.crossFade()
                             //.fitCenter() //acomodar la foto
                             //.centerCrop() //ajustar foto
                             .into(foto);
                 }
-                mascota.getImagen_nom();
+                mascota.getImagenNom();
                 nombre.setText(mascota.getNombre());
                 categoria.setText(mascota.getCategoria());
                 if (mascota.getSexo().equals("Macho")) {
@@ -128,7 +127,7 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
                     getSexo(false);
                 }
                 tip_mas.setText(mascota.getTipo());
-                fecha_nac.setText(mascota.getFecha_nac());
+                fecha_nac.setText(mascota.getFechaNac());
 
                 raza.setText(mascota.getRaza());
                 tamano.setText(mascota.getTamano());
@@ -136,7 +135,7 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
                 desc.setText(mascota.getDescripcion());
                 if (extras.getString("1").equals("primero")) {
                     cat_get = mascota.getCategoria();
-                    imagen_nom_res = mascota.getImagen_nom();
+                    imagen_nom_res = mascota.getImagenNom();
                 } else {
                     cat_get = extras.getString("cat_get");
                     imagen_nom_res = extras.getString("imagen_nom");
@@ -145,12 +144,12 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
 
             } else {
                 mascota.setImagen("");
-                mascota.setImagen_nom("");
+                mascota.setImagenNom("");
                 mascota.setNombre("");
                 mascota.setCategoria(categoria.getText().toString());
                 mascota.setSexo(macho.getText().toString());
                 mascota.setTipo(tip_mas.getText().toString());
-                mascota.setFecha_nac(fecha_nac.getText().toString());
+                mascota.setFechaNac(fecha_nac.getText().toString());
                 mascota.setRaza(raza.getText().toString());
                 mascota.setTamano(tamano.getText().toString());
                 mascota.setComuna(comuna.getText().toString());
@@ -201,12 +200,11 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
             public void onClick(View v) {
                 mascota.setNombre(nombre.getText().toString());
                 mascota.setDescripcion(desc.getText().toString());
-                Intent intent = new Intent(PublicarAnuncioActivity.this, CategoriaActivity.class);
+                Intent intent = new Intent(PubAnuncioActivity.this, CategoriaActivity.class);
                 intent.putExtra("1", "segundo");
                 intent.putExtra("mascota", mascota);
                 intent.putExtra("key", mas_key);
                 intent.putExtra("activity", activity);
-                intent.putExtra("sexo", statesex);
                 intent.putExtra("imagen_nom", imagen_nom_res);
                 intent.putExtra("cat_get", cat_get);
                 startActivity(intent);
@@ -226,12 +224,11 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
             public void onClick(View v) {
                 mascota.setNombre(nombre.getText().toString());
                 mascota.setDescripcion(desc.getText().toString());
-                Intent intent = new Intent(PublicarAnuncioActivity.this, TipoMascotaActivity.class);
+                Intent intent = new Intent(PubAnuncioActivity.this, TipoMascotaActivity.class);
                 intent.putExtra("1", "segundo");
                 intent.putExtra("mascota", mascota);
                 intent.putExtra("key", mas_key);
                 intent.putExtra("activity", activity);
-                intent.putExtra("sexo", statesex);
                 intent.putExtra("imagen_nom", imagen_nom_res);
                 intent.putExtra("cat_get", cat_get);
                 startActivity(intent);
@@ -247,12 +244,11 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
             public void onClick(View v) {
                 mascota.setNombre(nombre.getText().toString());
                 mascota.setDescripcion(desc.getText().toString());
-                Intent intent = new Intent(PublicarAnuncioActivity.this, RazaActivity.class);
+                Intent intent = new Intent(PubAnuncioActivity.this, RazaActivity.class);
                 intent.putExtra("1", "segundo");
                 intent.putExtra("mascota", mascota);
                 intent.putExtra("key", mas_key);
                 intent.putExtra("activity", activity);
-                intent.putExtra("sexo", statesex);
                 intent.putExtra("imagen_nom", imagen_nom_res);
                 intent.putExtra("cat_get", cat_get);
                 startActivity(intent);
@@ -265,12 +261,11 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
             public void onClick(View v) {
                 mascota.setNombre(nombre.getText().toString());
                 mascota.setDescripcion(desc.getText().toString());
-                Intent intent = new Intent(PublicarAnuncioActivity.this, TamanoActivity.class);
+                Intent intent = new Intent(PubAnuncioActivity.this, TamanoActivity.class);
                 intent.putExtra("1", "segundo");
                 intent.putExtra("mascota", mascota);
                 intent.putExtra("key", mas_key);
                 intent.putExtra("activity", activity);
-                intent.putExtra("sexo", statesex);
                 intent.putExtra("imagen_nom", imagen_nom_res);
                 intent.putExtra("cat_get", cat_get);
                 startActivity(intent);
@@ -284,12 +279,11 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
             public void onClick(View v) {
                 mascota.setNombre(nombre.getText().toString());
                 mascota.setDescripcion(desc.getText().toString());
-                Intent intent = new Intent(PublicarAnuncioActivity.this, RegionActivity.class);
+                Intent intent = new Intent(PubAnuncioActivity.this, RegionActivity.class);
                 intent.putExtra("1", "segundo");
                 intent.putExtra("mascota", mascota);
                 intent.putExtra("key", mas_key);
                 intent.putExtra("activity", activity);
-                intent.putExtra("sexo", statesex);
                 intent.putExtra("imagen_nom", imagen_nom_res);
                 intent.putExtra("cat_get", cat_get);
                 startActivity(intent);
@@ -335,8 +329,8 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
                                     if (!mascota.getTamano().equals("Tamaño")) {
 
                                         //FECHA DE NACIMIENTO
-                                        if (mascota.getFecha_nac().equals("Fecha de nacimiento")) {
-                                            mascota.setFecha_nac("");
+                                        if (mascota.getFechaNac().equals("Fecha de nacimiento")) {
+                                            mascota.setFechaNac("");
                                         }
                                         //COMUNA
                                         if (!mascota.getComuna().equals("Comuna")) {
@@ -381,20 +375,20 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
                                             //if(!imagen.equals(imagen_nom_res) && !imagen_nom.equals(imagen_nom_res)) {
 
                                             if (stateActivity) {
-                                                Toast.makeText(PublicarAnuncioActivity.this, "Cambios guardados correctamente", Toast.LENGTH_LONG).show();
+                                                Toast.makeText(PubAnuncioActivity.this, "Cambios guardados correctamente", Toast.LENGTH_LONG).show();
                                                 if (stateCambio) {
-                                                    Intent intent = new Intent(PublicarAnuncioActivity.this, MiCuentaActivity.class);
+                                                    Intent intent = new Intent(PubAnuncioActivity.this, MiCuentaActivity.class);
                                                     intent.putExtra("email", userS);
                                                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                                     if (mascota.getCategoria().equals("Mis Mascotas")) {
-                                                        Toast.makeText(PublicarAnuncioActivity.this, "Mascota fue cambiada a Mis Mascotas", Toast.LENGTH_LONG).show();
+                                                        Toast.makeText(PubAnuncioActivity.this, "Mascota fue cambiada a Mis Mascotas", Toast.LENGTH_LONG).show();
                                                     } else {
-                                                        Toast.makeText(PublicarAnuncioActivity.this, "Mascota fue cambiada a Mis Publicaciones", Toast.LENGTH_LONG).show();
+                                                        Toast.makeText(PubAnuncioActivity.this, "Mascota fue cambiada a Mis Publicaciones", Toast.LENGTH_LONG).show();
                                                     }
                                                     startActivity(intent);
                                                     finish();
                                                 } else {
-                                                    Intent intent1 = new Intent(PublicarAnuncioActivity.this, MascotaActivity.class);
+                                                    Intent intent1 = new Intent(PubAnuncioActivity.this, MascotaActivity.class);
                                                     intent1.putExtra("email", userS);
                                                     intent1.putExtra("activity", activity);
                                                     intent1.putExtra("mascota", mascota);
@@ -404,38 +398,38 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
                                                     finish();
                                                 }
                                             } else {
-                                                Intent intent = new Intent(PublicarAnuncioActivity.this, MainActivity.class);
+                                                Intent intent = new Intent(PubAnuncioActivity.this, MainActivity.class);
                                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                Toast.makeText(PublicarAnuncioActivity.this, "Mascota Ingresada Correctamente", Toast.LENGTH_LONG).show();
+                                                Toast.makeText(PubAnuncioActivity.this, "Mascota Ingresada Correctamente", Toast.LENGTH_LONG).show();
                                                 startActivity(intent);
                                                 finish();
                                             }
 
                                         } else {
-                                            Toast.makeText(PublicarAnuncioActivity.this, "Seleccione Comuna", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(PubAnuncioActivity.this, "Seleccione Comuna", Toast.LENGTH_LONG).show();
                                         }
                                     }else{
-                                        Toast.makeText(PublicarAnuncioActivity.this, "Seleccione Tamaño", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(PubAnuncioActivity.this, "Seleccione Tamaño", Toast.LENGTH_LONG).show();
                                     }
                                 }else{
                                     //if(!mascota.getRaza().equals("Raza") || mascota.getRaza().equals("Tipo de Ave")){
                                     if(mascota.getRaza().equals("Raza")){
-                                        Toast.makeText(PublicarAnuncioActivity.this, "Seleccione Raza", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(PubAnuncioActivity.this, "Seleccione Raza", Toast.LENGTH_LONG).show();
                                     }else{
-                                        Toast.makeText(PublicarAnuncioActivity.this, "Seleccione Tipo de ave", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(PubAnuncioActivity.this, "Seleccione Tipo de ave", Toast.LENGTH_LONG).show();
                                     }
                                 }
                             } else {
-                                Toast.makeText(PublicarAnuncioActivity.this, "Seleccione Tipo de mascota", Toast.LENGTH_LONG).show();
+                                Toast.makeText(PubAnuncioActivity.this, "Seleccione Tipo de mascota", Toast.LENGTH_LONG).show();
                             }
                         } else {
-                            Toast.makeText(PublicarAnuncioActivity.this, "Seleccione Categoria", Toast.LENGTH_LONG).show();
+                            Toast.makeText(PubAnuncioActivity.this, "Seleccione Categoria", Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        Toast.makeText(PublicarAnuncioActivity.this, "Sin Nombre", Toast.LENGTH_LONG).show();
+                        Toast.makeText(PubAnuncioActivity.this, "Sin Nombre", Toast.LENGTH_LONG).show();
                     }
             }else{
-                Toast.makeText(PublicarAnuncioActivity.this, "Sin Imagen", Toast.LENGTH_LONG).show();
+                Toast.makeText(PubAnuncioActivity.this, "Sin Imagen", Toast.LENGTH_LONG).show();
             }
 
             }
@@ -452,23 +446,23 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
             urif = data.getData();
             StorageReference filePath = mStorage.child("mascotas").child(urif.getLastPathSegment());
             if(!activity.equals("main")){
-                if(!mascota.getImagen_nom().isEmpty()){
-                    mStorage.child("mascotas").child(mascota.getImagen_nom()).delete();
+                if(!mascota.getImagenNom().isEmpty()){
+                    mStorage.child("mascotas").child(mascota.getImagenNom()).delete();
                 }
             }else{
-                if(!mascota.getImagen_nom().isEmpty() && state_imagen){
-                    mStorage.child("mascotas").child(mascota.getImagen_nom()).delete();
+                if(!mascota.getImagenNom().isEmpty() && state_imagen){
+                    mStorage.child("mascotas").child(mascota.getImagenNom()).delete();
                 }
             }
             filePath.putFile(urif).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     state_imagen = true;
-                    Toast.makeText(PublicarAnuncioActivity.this, "Se subio exitosamente", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PubAnuncioActivity.this, "Se subio exitosamente", Toast.LENGTH_LONG).show();
                     Uri descargarFoto = taskSnapshot.getDownloadUrl();
-                    mascota.setImagen_nom(urif.getLastPathSegment());
+                    mascota.setImagenNom(urif.getLastPathSegment());
                     mascota.setImagen(String.valueOf(descargarFoto));
-                    Glide.with(PublicarAnuncioActivity.this)
+                    Glide.with(PubAnuncioActivity.this)
                             .load(descargarFoto) //cargar el link
                             .fitCenter() //acomodar la foto
                             .centerCrop() //ajustar foto
@@ -477,7 +471,7 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
             });
 
         } else {
-            Toast.makeText(PublicarAnuncioActivity.this, "error", Toast.LENGTH_LONG).show();
+            Toast.makeText(PubAnuncioActivity.this, "error", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -544,9 +538,9 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
                         state_nac = true;
                     }
                     if(state_nac){
-                        Toast.makeText(PublicarAnuncioActivity.this, "Fecha supera a la actual", Toast.LENGTH_LONG).show();
+                        Toast.makeText(PubAnuncioActivity.this, "Fecha supera a la actual", Toast.LENGTH_LONG).show();
                     }
-                        mascota.setFecha_nac(fecha_nac.getText().toString());
+                        mascota.setFechaNac(fecha_nac.getText().toString());
 
                 }
             }
@@ -580,13 +574,13 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
                         public void onClick(DialogInterface dialog, int which) {
                             database = FirebaseDatabase.getInstance();
                             DatabaseReference reference = database.getReference();
-                            mStorage.child("mascotas").child(mascota.getImagen_nom()).delete();
+                            mStorage.child("mascotas").child(mascota.getImagenNom()).delete();
                             if(activity.equals("Mis Mascotas")){
                                 reference.child(FirebaseReference.ref_mis_mascotas).child(mas_key).removeValue();
                             }else{
                                 reference.child(FirebaseReference.ref_mascotas).child(mas_key).removeValue();
                             }
-                            Intent intent = new Intent(PublicarAnuncioActivity.this, MisActivity.class);
+                            Intent intent = new Intent(PubAnuncioActivity.this, MisActivity.class);
                             intent.putExtra("email", userS);
                             intent.putExtra("activity", activity);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -614,12 +608,12 @@ public class PublicarAnuncioActivity extends AppCompatActivity implements View.O
     public void onBackPressed() {
         Bundle extras = getIntent().getExtras();
         if(!activity.equals("main")){
-            if(!mascota.getImagen_nom().isEmpty()){
-                mStorage.child("mascotas").child(mascota.getImagen_nom()).delete();
+            if(!mascota.getImagenNom().isEmpty()){
+                mStorage.child("mascotas").child(mascota.getImagenNom()).delete();
             }
         }else{
             if(state_imagen){
-                mStorage.child("mascotas").child(mascota.getImagen_nom()).delete();
+                mStorage.child("mascotas").child(mascota.getImagenNom()).delete();
             }
         }
         super.onBackPressed();

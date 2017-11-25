@@ -40,7 +40,7 @@ public class AdapterRaza extends RecyclerView.Adapter<AdapterRaza.RazaViewHolder
     public void onBindViewHolder(RazaViewHolder holder, int position) {
         Raza raza = razas.get(position);
         holder.nombre.setText(raza.getNombre());
-        holder.Imagen_URL(raza.getImagen());
+        holder.imagenURL(raza.getImagen());
 
     }
 
@@ -68,14 +68,17 @@ public class AdapterRaza extends RecyclerView.Adapter<AdapterRaza.RazaViewHolder
         TextView nombre;
         ImageView foto;
 
-        public RazaViewHolder(View itemView) {
+         RazaViewHolder(View itemView) {
             super(itemView);
 
             nombre = (TextView)itemView.findViewById(R.id.raza_item);
             foto = (ImageView)itemView.findViewById(R.id.img_raza_item);
         }
-
-        private void Imagen_URL(String title){
+        /**
+         * Metodo para cargar imagen al ImageView
+         * @param title direccion de la imagen de firebase
+         */
+        private void imagenURL(String title){
             Glide.with(itemView.getContext())
                     .load(title)
                     .crossFade()

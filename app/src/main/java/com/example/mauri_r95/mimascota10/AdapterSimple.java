@@ -16,7 +16,7 @@ import java.util.List;
  * @version 1.1 Cambios hechos
  */
 
-public class AdapterSimple extends RecyclerView.Adapter<AdapterSimple.AdapterSimpleViewHolder> implements View.OnClickListener{
+public class AdapterSimple extends RecyclerView.Adapter<AdapterSimple.AdapterSViewHolder> implements View.OnClickListener{
 
     List<String> list;
     private Context c;
@@ -29,16 +29,16 @@ public class AdapterSimple extends RecyclerView.Adapter<AdapterSimple.AdapterSim
 
     @Override
     //erá quien devuelva el ViewHolder con el layout seteado que previamente definimos \res\layout\item_listview_main.xml
-    public AdapterSimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AdapterSViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(c).inflate(R.layout.item_recycler_simple,parent,false);
-        AdapterSimpleViewHolder holder = new AdapterSimpleViewHolder(v);
+        AdapterSViewHolder holder = new AdapterSViewHolder(v);
         v.setOnClickListener(this);
         return holder;
     }
 
     @Override
     //será quien se encargue de establecer los objetos en el ViewHolder
-    public void onBindViewHolder(AdapterSimpleViewHolder holder, int position) {
+    public void onBindViewHolder(AdapterSViewHolder holder, int position) {
         final String cate = list.get(position);
         holder.textView.setText(cate);
 
@@ -67,12 +67,12 @@ public class AdapterSimple extends RecyclerView.Adapter<AdapterSimple.AdapterSim
      * @since 1.0
      * @version 1.1 Cambios hechos
      */
-    protected class  AdapterSimpleViewHolder extends RecyclerView.ViewHolder{
+    protected class AdapterSViewHolder extends RecyclerView.ViewHolder{
 
         TextView textView;
 
 
-        public AdapterSimpleViewHolder(View itemView) {
+        AdapterSViewHolder(View itemView) {
             super(itemView);
 
             textView = (TextView)itemView.findViewById(R.id.text_r_simple);

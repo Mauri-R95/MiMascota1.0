@@ -110,14 +110,13 @@ public class RazaActivity extends AppCompatActivity {
                     String mas_key = extras.getString("key"); //
                     String imagen_nom = extras.getString("imagen_nom"); //
                     mascota.setRaza(raza.getNombre());
-                    Intent intent = new Intent(RazaActivity.this, PublicarAnuncioActivity.class);
+                    Intent intent = new Intent(RazaActivity.this, PubAnuncioActivity.class);
                     intent.putExtra("1", "segundo");
                     intent.putExtra("cat_get", cat_get);
                     intent.putExtra("key", mas_key);
                     intent.putExtra("activity", activity);
                     intent.putExtra("mascota", mascota);
                     intent.putExtra("imagen_nom", imagen_nom);
-                    intent.putExtra("sexo", statesex);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();

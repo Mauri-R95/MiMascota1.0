@@ -47,9 +47,8 @@ public class LoginActivity extends AppCompatActivity {
         btn_ingresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email, pass;
-                email = emailEdit.getText().toString();
-                pass = passEdit.getText().toString();
+                String email = emailEdit.getText().toString();
+                String pass = passEdit.getText().toString();
                 if (!email.isEmpty() || !pass.isEmpty()) {
                     mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                         @Override
