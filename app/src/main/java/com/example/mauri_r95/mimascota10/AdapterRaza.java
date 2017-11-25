@@ -63,7 +63,7 @@ public class AdapterRaza extends RecyclerView.Adapter<AdapterRaza.RazaViewHolder
      * @since 1.0
      * @version 1.1 Cambios hechos
      */
-    public class RazaViewHolder extends RecyclerView.ViewHolder{
+    protected class RazaViewHolder extends RecyclerView.ViewHolder{
 
         TextView nombre;
         ImageView foto;

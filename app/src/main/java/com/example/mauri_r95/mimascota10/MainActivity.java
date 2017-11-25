@@ -221,7 +221,6 @@ public class MainActivity extends AppCompatActivity
                     nombreNav.setVisibility(View.VISIBLE);
                     ingresar.setVisibility(View.GONE);
                     cerrar.setVisibility(View.VISIBLE);
-                    Log.i("SESION", "sesion inciada con email: " + user.getEmail());
                 }
                 else{
 

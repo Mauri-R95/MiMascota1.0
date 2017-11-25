@@ -15,14 +15,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-/**
- * Created by Mauri_R95 on 04-10-2017.
- * clase para cambiar la contraseña del usuario
- *
- * @author Mauri_R95
- * @since 1.0
- * @version 1.1 Cambios hechos
- */
 public class CambiarPassActivity extends AppCompatActivity {
 
     private EditText pass,passR;

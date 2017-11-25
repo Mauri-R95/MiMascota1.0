@@ -91,7 +91,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MascotaViewHolder> imp
      */
 
 
-    public class  MascotaViewHolder extends RecyclerView.ViewHolder{
+    protected class  MascotaViewHolder extends RecyclerView.ViewHolder{
 
         TextView nombreT, fechaComT, categoriaT;
         ImageView foto, img_fav;

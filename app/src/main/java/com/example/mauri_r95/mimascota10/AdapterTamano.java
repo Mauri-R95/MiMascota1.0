@@ -75,7 +75,7 @@ public class AdapterTamano extends RecyclerView.Adapter<AdapterTamano.TamanoView
      * @since 1.0
      * @version 1.1 Cambios hechos
      */
-    public class  TamanoViewHolder extends RecyclerView.ViewHolder{
+    protected class  TamanoViewHolder extends RecyclerView.ViewHolder{
 
         TextView nombreT, abrevT, pesoT;
         ImageView foto;

@@ -19,10 +19,10 @@ import java.util.List;
 public class AdapterSimple extends RecyclerView.Adapter<AdapterSimple.AdapterSimpleViewHolder> implements View.OnClickListener{
 
     List<String> list;
-    Context c;
+    private Context c;
     private View.OnClickListener listener;
 
-    public AdapterSimple(Context c, List<String> list) {
+    private AdapterSimple(Context c, List<String> list) {
         this.c = c;
         this.list = list;
     }
@@ -67,12 +67,12 @@ public class AdapterSimple extends RecyclerView.Adapter<AdapterSimple.AdapterSim
      * @since 1.0
      * @version 1.1 Cambios hechos
      */
-    public class  AdapterSimpleViewHolder extends RecyclerView.ViewHolder{
+    protected class  AdapterSimpleViewHolder extends RecyclerView.ViewHolder{
 
         TextView textView;
 
 
-        public AdapterSimpleViewHolder(View itemView) {
+        private AdapterSimpleViewHolder(View itemView) {
             super(itemView);
 
             textView = (TextView)itemView.findViewById(R.id.text_r_simple);

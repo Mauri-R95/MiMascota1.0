@@ -216,7 +216,8 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
         if(state) {
             macho.setBackground(getDrawable(R.drawable.boton_redondo));
             macho.setTextColor(Color.BLACK);
-            hembra.setBackground(getDrawable(R.drawable.boton_red_gris));
+            Drawable hembraD = getDrawable(R.drawable.boton_red_gris);
+            hembra.setBackground(hembraD);
 
             hembra.setTextColor(Color.WHITE);
             sexo_st = macho.getText().toString();
