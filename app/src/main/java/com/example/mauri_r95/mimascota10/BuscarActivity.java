@@ -271,8 +271,9 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
             v_raza.setVisibility(View.GONE);
             raza_tex.setText(R.string.raza);
             raza.setText(R.string.raza);
-
-            tamano.setText(tamanoS);
+            if(tamanoS != null) {
+                tamano.setText(tamanoS);
+            }
 
             comuna.setText(R.string.comuna);
 
