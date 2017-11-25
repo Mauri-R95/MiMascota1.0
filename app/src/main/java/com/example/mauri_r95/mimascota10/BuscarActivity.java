@@ -31,7 +31,7 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
     private LinearLayout li_cat, li_tip_mas, li_raza, li_tam, li_edad, li_com;
     private View v_raza, v_tam;
     private Boolean statesex = true;
-    private String categoria_s, tip_mas_s, raza_s, tamano_s, comuna_s, sexo_st;
+    private String categoria_s, tip_mas_s, raza_s, tamano_s, comuna_s, sexo_st, tamanoS;
 
 
     @Override
@@ -58,6 +58,8 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
         li_com = (LinearLayout)findViewById(R.id.li_com_b);
         v_raza = findViewById(R.id.v_raza_b);
         v_tam = findViewById(R.id.v_tam_b);
+
+        String tamanoS = getResources().getString(R.string.tamano);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null){
@@ -269,8 +271,6 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
             v_raza.setVisibility(View.GONE);
             raza_tex.setText(R.string.raza);
             raza.setText(R.string.raza);
-            String tamanoS = getResources().getString(R.string.tamano);
-            //funciona
             tamano.setText(tamanoS);
 
             comuna.setText(R.string.comuna);
