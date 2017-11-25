@@ -218,7 +218,6 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
             macho.setTextColor(Color.BLACK);
             Drawable hembraD = getDrawable(R.drawable.boton_red_gris);
             hembra.setBackground(hembraD);
-
             hembra.setTextColor(Color.WHITE);
             sexo_st = macho.getText().toString();
             statesex = true;
@@ -268,7 +267,8 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
             v_raza.setVisibility(View.GONE);
             raza_tex.setText(R.string.raza);
             raza.setText(R.string.raza);
-            tamano.setText(R.string.tamano);
+            String tamanoS = R.string.tamano;
+            tamano.setText(tamanoS);
             comuna.setText(R.string.comuna);
 
 
