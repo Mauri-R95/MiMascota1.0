@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+
 /**
  * Created by Mauri_R95 on 04-10-2017.
  * Clase para buscar una mascota segun caracteristicas especificas
@@ -267,7 +269,7 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
             v_raza.setVisibility(View.GONE);
             raza_tex.setText(R.string.raza);
             raza.setText(R.string.raza);
-            String tamanoS = R.string.tamano;
+            String tamanoS = getResources().getString(R.string.tamano);
             tamano.setText(tamanoS);
             comuna.setText(R.string.comuna);
 
