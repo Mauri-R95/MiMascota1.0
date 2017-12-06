@@ -1,13 +1,14 @@
-package com.example.mauri_r95.mimascota10;
+package com.example.mauri_r95.mimascota10.Vista;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.mauri_r95.mimascota10.R;
+
 /**
  * Created by Mauri_R95 on 04-10-2017.
  * clase que carga el inicio  y el logo de la aplicacion

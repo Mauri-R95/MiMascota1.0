@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.mauri_r95.mimascota10.Modelos.Tamano;
+import com.example.mauri_r95.mimascota10.Modelo.Tamano;
 
 import java.util.List;
 

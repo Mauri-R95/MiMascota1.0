@@ -1,4 +1,4 @@
-package com.example.mauri_r95.mimascota10.Modelos;
+package com.example.mauri_r95.mimascota10.Modelo;
 
 /**
  * Created by Mauri_R95 on 04-10-2017.

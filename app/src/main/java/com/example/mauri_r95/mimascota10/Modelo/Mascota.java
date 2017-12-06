@@ -1,4 +1,4 @@
-package com.example.mauri_r95.mimascota10.Modelos;
+package com.example.mauri_r95.mimascota10.Modelo;
 
 
 import android.os.Parcel;

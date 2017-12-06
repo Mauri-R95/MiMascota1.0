@@ -1,4 +1,4 @@
-package com.example.mauri_r95.mimascota10;
+package com.example.mauri_r95.mimascota10.Vista;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -23,8 +23,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.mauri_r95.mimascota10.Modelos.Mascota;
-import com.example.mauri_r95.mimascota10.Modelos.Usuario;
+import com.example.mauri_r95.mimascota10.Adapter;
+import com.example.mauri_r95.mimascota10.Controlador.MainControlador;
+import com.example.mauri_r95.mimascota10.FirebaseReference;
+import com.example.mauri_r95.mimascota10.Modelo.MainModel;
+import com.example.mauri_r95.mimascota10.Modelo.Mascota;
+import com.example.mauri_r95.mimascota10.Modelo.Usuario;
+import com.example.mauri_r95.mimascota10.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -50,11 +55,12 @@ public class MainActivity extends AppCompatActivity
     String emailS;
     private Adapter adapter;
     private RecyclerView recyclerView;
-    private List<Mascota> mascotaList;
+    private List<Mascota> mMascotas;
     private List<String> mas_key;
-    private FirebaseDatabase database;
     private ProgressDialog dialog;
 
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
 
 
 
@@ -72,6 +78,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         dialog = new ProgressDialog(this);
         setSupportActionBar(toolbar);
+        //cargar recyclerView
 
 
 
@@ -131,46 +138,44 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        //recicler
+        //RecyclerView
         recyclerView = (RecyclerView)findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        mascotaList = new ArrayList<>();
+        //MainModel model = new MainModel();
+        //mascotas = model.inicializarMascotas();
+        mMascotas = new ArrayList<>();
         mas_key = new ArrayList<>();
-        database = FirebaseDatabase.getInstance();
-        final DatabaseReference reference= database.getReference();
-        adapter = new Adapter(mascotaList);
+        adapter = new Adapter(mMascotas);
         recyclerView.setAdapter(adapter);
-        //cargarDatos();
-        //adapter.notifyDataSetChanged();
-        dialog.setMessage("Cargando...");
-        dialog.show();
-       reference.child(FirebaseReference.ref_mascotas).addValueEventListener(new ValueEventListener() {
+        database = FirebaseDatabase.getInstance();
+        reference= database.getReference();
+        reference.child(FirebaseReference.ref_mascotas).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mascotaList.removeAll(mascotaList);
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                mMascotas.removeAll(mMascotas);
+                for (DataSnapshot ds: dataSnapshot.getChildren()){
                     String key = ds.getKey();
                     Mascota mascota = ds.getValue(Mascota.class);
-
                     mas_key.add(key);
-                    mascotaList.add(mascota);
+                    mMascotas.add(mascota);
 
                 }
                 adapter.notifyDataSetChanged();
-
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
         });
-        dialog.dismiss();
+
+        //dialog.dismiss();
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Mascota mascota = mascotaList.get(recyclerView.getChildAdapterPosition(v));
+                Mascota mascota = mMascotas.get(recyclerView.getChildAdapterPosition(v));
                 int pos = recyclerView.getChildAdapterPosition(v);
                 String key = mas_key.get(pos);
                 Intent intent = new Intent(MainActivity.this, MascotaActivity.class);
@@ -330,10 +335,11 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
+
     @Override
     protected void onStart() {
         super.onStart();
-
         //VERIFICA SI HAY UNA SESIÓN INICIADA AL ABRIR EL PROGRAMA
         FirebaseAuth.getInstance().addAuthStateListener(mAuthListener);
     }
@@ -344,5 +350,6 @@ public class MainActivity extends AppCompatActivity
 
         FirebaseAuth.getInstance().removeAuthStateListener(mAuthListener);
     }
+
 
 }

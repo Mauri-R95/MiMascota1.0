@@ -1,4 +1,4 @@
-package com.example.mauri_r95.mimascota10;
+package com.example.mauri_r95.mimascota10.Vista;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,10 +7,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import com.example.mauri_r95.mimascota10.Modelos.Favoritos;
-import com.example.mauri_r95.mimascota10.Modelos.Mascota;
+import com.example.mauri_r95.mimascota10.Adapter;
+import com.example.mauri_r95.mimascota10.FirebaseReference;
+import com.example.mauri_r95.mimascota10.Modelo.Favoritos;
+import com.example.mauri_r95.mimascota10.Modelo.Mascota;
+import com.example.mauri_r95.mimascota10.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

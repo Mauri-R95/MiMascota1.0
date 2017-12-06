@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mauri_r95.mimascota10.MiCuentaActivity">
+    tools:context="com.example.mauri_r95.mimascota10.Vista.MiCuentaActivity">
 
     <LinearLayout
         android:layout_width="372dp"

@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.mauri_r95.mimascota10.Modelos.Mascota;
+import com.example.mauri_r95.mimascota10.Modelo.Mascota;
 
 import java.util.List;
 
@@ -86,7 +86,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MascotaViewHolder> imp
         TextView nombreT, fechaComT, categoriaT;
         ImageView foto, img_fav;
 
-         MascotaViewHolder(View itemView) {
+         public MascotaViewHolder(View itemView) {
             super(itemView);
             nombreT = (TextView)itemView.findViewById(R.id.nombre_item);
             fechaComT = (TextView)itemView.findViewById(R.id.fecha_item);

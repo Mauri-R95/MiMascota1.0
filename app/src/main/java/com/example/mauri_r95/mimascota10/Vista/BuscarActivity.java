@@ -1,4 +1,4 @@
-package com.example.mauri_r95.mimascota10;
+package com.example.mauri_r95.mimascota10.Vista;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,7 +13,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.mauri_r95.mimascota10.R;
 
 /**
  * Created by Mauri_R95 on 04-10-2017.

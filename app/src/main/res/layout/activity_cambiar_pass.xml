@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mauri_r95.mimascota10.CambiarPassActivity">
+    tools:context="com.example.mauri_r95.mimascota10.Vista.CambiarPassActivity">
 
     <EditText
         android:id="@+id/pass_change"

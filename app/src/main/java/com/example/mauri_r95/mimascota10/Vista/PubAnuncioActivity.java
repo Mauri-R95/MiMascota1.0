@@ -1,4 +1,4 @@
-package com.example.mauri_r95.mimascota10;
+package com.example.mauri_r95.mimascota10.Vista;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -26,7 +26,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.mauri_r95.mimascota10.Modelos.Mascota;
+import com.example.mauri_r95.mimascota10.FirebaseReference;
+import com.example.mauri_r95.mimascota10.Modelo.Mascota;
+import com.example.mauri_r95.mimascota10.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name=".Vista.SplashActivity"
             android:noHistory="true"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
@@ -28,51 +28,55 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Vista.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Vista.LoginActivity"
             android:label="@string/login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MascotaActivity"
+            android:name=".Vista.MascotaActivity"
             android:label="@string/mascota"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".RegistrarActivity"
+            android:name=".Vista.RegistrarActivity"
             android:label="@string/registrar" />
         <activity
-            android:name=".PubAnuncioActivity"
+            android:name=".Vista.PubAnuncioActivity"
             android:label="@string/publicar_anuncio" />
         <activity
-            android:name=".CategoriaActivity"
+            android:name=".Vista.CategoriaActivity"
             android:label="@string/categoria" />
         <activity
-            android:name=".TipoMascotaActivity"
+            android:name=".Vista.TipoMascotaActivity"
             android:label="@string/tipo_mascota" />
         <activity
-            android:name=".TamanoActivity"
+            android:name=".Vista.TamanoActivity"
             android:label="@string/tamano" />
         <activity
-            android:name=".ComunaActivity"
+            android:name=".Vista.ComunaActivity"
             android:label="@string/comuna" />
         <activity
-            android:name=".ProvinciaActivity"
+            android:name=".Vista.ProvinciaActivity"
             android:label="@string/provincia" />
         <activity
-            android:name=".RazaActivity"
+            android:name=".Vista.RazaActivity"
             android:label="@string/raza" />
         <activity
-            android:name=".RegionActivity"
+            android:name=".Vista.RegionActivity"
             android:label="@string/region" />
         <activity
-            android:name=".MiCuentaActivity"
+            android:name=".Vista.MiCuentaActivity"
             android:label="@string/mi_cuenta" />
-        <activity android:name=".BuscarActivity" />
-        <activity android:name=".EditarCuentaActivity" />
-        <activity android:name=".CambiarPassActivity" />
-        <activity android:name=".MisActivity"></activity>
+        <activity android:name=".Vista.BuscarActivity" />
+        <activity android:name=".Vista.EditarCuentaActivity" />
+        <activity android:name=".Vista.CambiarPassActivity" />
+        <activity android:name=".Vista.MisActivity" />
+        <activity
+            android:name=".Vista.BuscarVetActivity"
+            android:label="@string/title_activity_buscar_vet"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

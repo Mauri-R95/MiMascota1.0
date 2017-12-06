@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mauri_r95.mimascota10.BuscarActivity"
+    tools:context="com.example.mauri_r95.mimascota10.Vista.BuscarActivity"
     android:orientation="vertical"
     android:weightSum="1">
 
@@ -85,6 +85,7 @@
             android:orientation="horizontal">
 
             <Button
+
                 android:id="@+id/macho_b"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

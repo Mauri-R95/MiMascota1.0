@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.mauri_r95.mimascota10.Modelos.Raza;
+import com.example.mauri_r95.mimascota10.Modelo.Raza;
 
 import java.util.List;
 
