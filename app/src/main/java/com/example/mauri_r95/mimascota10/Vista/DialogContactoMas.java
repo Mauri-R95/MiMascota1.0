@@ -1,5 +1,6 @@
 package com.example.mauri_r95.mimascota10.Vista;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -18,19 +19,17 @@ public class DialogContactoMas extends DialogFragment  {
 
     private TextView textView;
 
-    public interface NewListener{
-        void FinalizaCuadroDialogo(String texto);
-    }
 
-    public DialogContactoMas() {
-    }
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View dialog = inflater.inflate(R.layout.dialog_contacto_mas, container);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        setCancelable(false);
+        View dialog = inflater.inflate(R.layout.dialog_contacto_mas, null);
         textView = (TextView)dialog.findViewById(R.id.textView3);
         getDialog().setTitle("Informacion del dueño");
         return dialog;
+    }
+
+
+    public void show(FragmentManager manager, String contacto) {
     }
 }

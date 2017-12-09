@@ -1,5 +1,6 @@
 package com.example.mauri_r95.mimascota10.Vista;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,6 +35,7 @@ public class MascotaActivity extends AppCompatActivity  {
     LinearLayout li_tam;
     private FirebaseDatabase database;
     private String activity, mas_key;
+    private Button contacto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,31 +50,34 @@ public class MascotaActivity extends AppCompatActivity  {
 
         database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference();
-        //FOTO
         foto = (ImageView)findViewById(R.id.imageView_pet);
+        nombre = (TextView)findViewById(R.id.nombre_pet);
+        fecha = (TextView)findViewById(R.id.fecha_pet);
+        fecha_nac = (TextView)findViewById(R.id.fecha_nac);
+        comuna = (TextView)findViewById(R.id.text_com_pet);
+        tip_raz = (TextView)findViewById(R.id.text_tip_pet);
+        tip_raz_T = (TextView)findViewById(R.id.tipo_raza);
+        categoria = (TextView)findViewById(R.id.text_cat_pet);
+        sexo = (TextView)findViewById(R.id.text_sex_pet);
+        tamano = (TextView)findViewById(R.id.text_tam_pet);
+        li_tam = (LinearLayout)findViewById(R.id.li_tam_pet);
+        asignarVariables(mascota);
+
+
+
+    }
+
+    public void asignarVariables(Mascota mascota){
         Glide.with(MascotaActivity.this)
                 .load(mascota.getImagen()) //cargar el link
                 //.crossFade()
                 //.fitCenter() //acomodar la foto
                 //.centerCrop() //ajustar foto
                 .into(foto);
-
-        //NOMBRE
-        nombre = (TextView)findViewById(R.id.nombre_pet);
         nombre.setText(mascota.getNombre());
-        //FECHA
-        fecha = (TextView)findViewById(R.id.fecha_pet);
         fecha.setText(mascota.getFecha());
-        //FECHA DE NACIMIENTO
-        fecha_nac = (TextView)findViewById(R.id.fecha_nac);
         fecha_nac.setText("fecha de nacimiento: "+ mascota.getFecha_nac());
-
-        // COMUNA
-        comuna = (TextView)findViewById(R.id.text_com_pet);
         comuna.setText(mascota.getComuna());
-        // TIPO Y RAZA
-        tip_raz = (TextView)findViewById(R.id.text_tip_pet);
-        tip_raz_T = (TextView)findViewById(R.id.tipo_raza);
         if(mascota.getRaza().isEmpty()){
             tip_raz_T.setText("Tipo");
             tip_raz.setText(mascota.getTipo());
@@ -79,28 +85,25 @@ public class MascotaActivity extends AppCompatActivity  {
             tip_raz_T.setText("Tipo - Raza");
             tip_raz.setText(mascota.getTipo() + " - " + mascota.getRaza());
         }
-        //CATEGORIA
-        categoria = (TextView)findViewById(R.id.text_cat_pet);
         categoria.setText(mascota.getCategoria());
-        //SEXO
-        sexo = (TextView)findViewById(R.id.text_sex_pet);
         sexo.setText(mascota.getSexo());
-
-        //TAMAÑO
-        tamano = (TextView)findViewById(R.id.text_tam_pet);
-        li_tam = (LinearLayout)findViewById(R.id.li_tam_pet);
         if(mascota.getTamano().isEmpty()){
             li_tam.setVisibility(View.GONE);
         }else{
             tamano.setText(mascota.getTamano());
         }
-        //DESCRIPCION
         desc = (TextView)findViewById(R.id.text_des_pet);
         if(mascota.getDescripcion().isEmpty()){
             desc.setText("Sin Descripción");
         }else{
             desc.setText(mascota.getDescripcion());
         }
+    }
+
+    public void mostrarDialog(View v){
+        FragmentManager manager = getFragmentManager();
+        DialogContactoMas myDialog = new DialogContactoMas();
+        myDialog.show(manager, "contacto");
     }
 
     //AGREGAR BOTON AL ACTION BAR

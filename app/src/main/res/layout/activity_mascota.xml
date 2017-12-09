@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="4dp" />
+        android:layout_marginTop="4dp" android:contentDescription="@string/todo" />
 
     <LinearLayout
         android:id="@+id/linearLayout_3"
@@ -37,8 +37,8 @@
         android:layout_marginRight="8dp">
 
         <Button
-            android:id="@+id/btn_his_med_pet"
-            android:layout_width="match_parent"
+            android:id="@+id/btn_contac_mas"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
@@ -46,23 +46,8 @@
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:background="@drawable/boton_redondo"
-            android:text="Historial Médico"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <Button
-            android:id="@+id/btn_num_pet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
-            android:background="@drawable/boton_redondo"
-            android:text="Número"
+            android:text="@string/n_mero"
+            android:onClick="mostrarDialog"
             app:layout_constraintBottom_toTopOf="@+id/btn_his_med_pet"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -71,18 +56,16 @@
 
     <LinearLayout
         android:id="@+id/linearLayout_2"
-        android:layout_width="340dp"
-        android:layout_height="133dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="341dp"
+        android:layout_height="151dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout_1"
-        android:layout_marginTop="8dp"
-        app:layout_constraintHorizontal_bias="0.5">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,14 +77,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Categoría" />
+                android:text="@string/categor_a" />
 
             <TextView
                 android:id="@+id/text_cat_pet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Adopción"
+                android:text="@string/adopci_n"
                 android:textAlignment="textEnd" />
         </LinearLayout>
 
@@ -115,14 +98,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Comuna" />
+                android:text="@string/comuna" />
 
             <TextView
                 android:id="@+id/text_com_pet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Cerrillos"
+                android:text="@string/cerrillos"
                 android:textAlignment="textEnd" />
         </LinearLayout>
 
@@ -136,14 +119,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sexo" />
+                android:text="@string/sexo" />
 
             <TextView
                 android:id="@+id/text_sex_pet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Macho"
+                android:text="@string/macho"
                 android:textAlignment="textEnd" />
         </LinearLayout>
 
@@ -158,16 +141,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tamaño" />
+                android:text="@string/tama_o" />
 
             <TextView
                 android:id="@+id/text_tam_pet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Chico"
+                android:text="@string/chico"
                 android:textAlignment="textEnd" />
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -179,15 +163,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tipo - Raza" />
+                android:text="@string/tipo_raza" />
 
             <TextView
                 android:id="@+id/text_tip_pet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Perro - Quiltro"
+                android:text="@string/perro_quiltro"
                 android:textAlignment="textEnd" />
+
         </LinearLayout>
 
         <view
@@ -195,20 +180,20 @@
             id="@+id/view3"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="@android:color/black"/>
+            android:background="@android:color/black" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripción"
+            android:text="@string/descripci_n"
             android:textColor="@color/colorAccent" />
 
         <TextView
             android:id="@+id/text_des_pet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Descripción e información adicional"
+            android:text="@string/descripci_n_e_informaci_n_adicional"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="109dp" />
 
@@ -218,10 +203,8 @@
         android:id="@+id/linearLayout_1"
         android:layout_width="371dp"
         android:layout_height="67dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="2dp"
         android:background="@color/Gris"
         android:orientation="vertical"
@@ -234,7 +217,7 @@
             android:id="@+id/fecha_pet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="21-08-2017"
+            android:text="@string/_21_08_2017"
             android:textAlignment="center"
             android:textColor="?attr/colorControlNormal"
             tools:layout_editor_absoluteX="8dp"
@@ -244,7 +227,7 @@
             android:id="@+id/nombre_pet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cholo"
+            android:text="@string/cholo"
             android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -253,7 +236,7 @@
             android:id="@+id/fecha_nac"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fecha de nacimiento: "
+            android:text="@string/fecha_de_nacimiento"
             android:textAlignment="center"
             android:textSize="18sp" />
 

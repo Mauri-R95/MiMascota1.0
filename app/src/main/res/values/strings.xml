@@ -42,4 +42,22 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_buscar_vet">BuscarVetActivity</string>
     <string name="title_activity_maps">Map</string>
+    <string name="n_mero">Número</string>
+    <string name="categor_a">Categoría</string>
+    <string name="adopci_n">Adopción</string>
+    <string name="todo">TODO</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento:</string>
+    <string name="cholo">Cholo</string>
+    <string name="_21_08_2017">21-08-2017</string>
+    <string name="descripci_n_e_informaci_n_adicional">Descripción e información adicional</string>
+    <string name="descripci_n">Descripción</string>
+    <string name="no">No</string>
+    <string name="tag_registrado">tag registrado</string>
+    <string name="perro_quiltro">Perro - Quiltro</string>
+    <string name="tipo_raza">Tipo - Raza</string>
+    <string name="chico">Chico</string>
+    <string name="tama_o">Tamaño</string>
+    <string name="macho">Macho</string>
+    <string name="sexo">Sexo</string>
+    <string name="cerrillos">Cerrillos</string>
 </resources>
