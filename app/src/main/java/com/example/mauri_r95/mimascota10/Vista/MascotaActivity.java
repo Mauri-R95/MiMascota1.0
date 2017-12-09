@@ -1,8 +1,13 @@
 package com.example.mauri_r95.mimascota10.Vista;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,12 +17,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.mauri_r95.mimascota10.FirebaseReference;
 import com.example.mauri_r95.mimascota10.Modelo.Mascota;
+import com.example.mauri_r95.mimascota10.Modelo.Usuario;
 import com.example.mauri_r95.mimascota10.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by Mauri_R95 on 04-10-2017.
@@ -30,12 +41,17 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MascotaActivity extends AppCompatActivity  {
 
     Mascota mascota;
+    Usuario user;
     ImageView foto;
     TextView nombre, fecha, fecha_nac, comuna, tip_raz, tip_raz_T, categoria, sexo, tamano, desc;
     LinearLayout li_tam;
-    private FirebaseDatabase database;
-    private String activity, mas_key;
+    private String activity, mas_key, email;
     private Button contacto;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+    TextView nombre_user, email_user, tel_user;
+    String nombre_u, email_u, tel_u;
+    Button llamar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +62,12 @@ public class MascotaActivity extends AppCompatActivity  {
         activity = extras.getString("activity");
         mascota =  extras.getParcelable("mascota");
         mas_key = extras.getString("key");
+
         //Toast.makeText(getApplicationContext(), mas_key, Toast.LENGTH_SHORT).show();
 
         database = FirebaseDatabase.getInstance();
-        DatabaseReference reference = database.getReference();
+        reference = database.getReference();
+        final DatabaseReference reference = database.getReference();
         foto = (ImageView)findViewById(R.id.imageView_pet);
         nombre = (TextView)findViewById(R.id.nombre_pet);
         fecha = (TextView)findViewById(R.id.fecha_pet);
@@ -61,11 +79,81 @@ public class MascotaActivity extends AppCompatActivity  {
         sexo = (TextView)findViewById(R.id.text_sex_pet);
         tamano = (TextView)findViewById(R.id.text_tam_pet);
         li_tam = (LinearLayout)findViewById(R.id.li_tam_pet);
+        contacto = (Button)findViewById(R.id.btn_contac_mas);
+
         asignarVariables(mascota);
 
+        reference.child(FirebaseReference.ref_usuarios).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Usuario usuario = ds.getValue(Usuario.class);
+                    if(usuario.getEmail().equals(mascota.getUsuario())){
+                        nombre_u = usuario.getNombre();
+                        email_u = usuario.getEmail();
+                        if(!usuario.getTelefono().isEmpty()) {
+                            tel_u = usuario.getTelefono();
+                        }else{
+                            tel_u = "No Disponible";
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
+
+        contacto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String telefono;
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MascotaActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.dialog_contacto_mas, null);
+                TextView nombre_user = (TextView)mView.findViewById(R.id.con_nom_user);
+                TextView email_user = (TextView) mView.findViewById(R.id.con_email_user);
+                TextView tel_user = (TextView)mView.findViewById(R.id.con_tel_user);
+                Button llamar = (Button)mView.findViewById(R.id.con_btn_call);
+
+                nombre_user.setText("Nombre: "+nombre_u);
+                email_user.setText("Email: "+email_u);
+                tel_user.setText("Teléfono: "+ tel_u);
+
+                llamar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(!tel_u.equals("No Disponible")) {
+                            Uri tel = Uri.parse("tel:" + tel_u);
+                            Intent intent = new Intent(Intent.ACTION_CALL);
+                            intent.setData(tel);
+                            if (ActivityCompat.checkSelfPermission(MascotaActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                                // TODO: Consider calling
+                                //    ActivityCompat#requestPermissions
+                                // here to request the missing permissions, and then overriding
+                                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                //                                          int[] grantResults)
+                                // to handle the case where the user grants the permission. See the documentation
+                                // for ActivityCompat#requestPermissions for more details.
+                                return;
+                            }
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Telefono no Disponible", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                mBuilder.setView(mView);
+                AlertDialog dialog = mBuilder.create();
+                dialog.show();
+            }
+        });
     }
+
+
+
 
     public void asignarVariables(Mascota mascota){
         Glide.with(MascotaActivity.this)
@@ -98,12 +186,6 @@ public class MascotaActivity extends AppCompatActivity  {
         }else{
             desc.setText(mascota.getDescripcion());
         }
-    }
-
-    public void mostrarDialog(View v){
-        FragmentManager manager = getFragmentManager();
-        DialogContactoMas myDialog = new DialogContactoMas();
-        myDialog.show(manager, "contacto");
     }
 
     //AGREGAR BOTON AL ACTION BAR

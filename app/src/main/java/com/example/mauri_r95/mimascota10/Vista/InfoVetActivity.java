@@ -1,5 +1,7 @@
 package com.example.mauri_r95.mimascota10.Vista;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -31,47 +33,48 @@ public class InfoVetActivity extends AppCompatActivity implements OnMapReadyCall
     GoogleMap map;
     SupportMapFragment mapFragment;
     Veterinario veterinario;
-    TextView nombre,direccion, contacto, pagWeb, email, distancia;
+    TextView nombre, direccion, contacto, pagWeb, email, distancia;
     Button gen_rut;
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_vet);
 
-        nombre = (TextView)findViewById(R.id.Nombre_vet_text);
-        direccion = (TextView)findViewById(R.id.direccion_vet_text);
-        contacto = (TextView)findViewById(R.id.contacto_vet_text);
-        pagWeb = (TextView)findViewById(R.id.pagWeb_vet_text);
-        email = (TextView)findViewById(R.id.Email_vet_text);
-        distancia = (TextView)findViewById(R.id.Distancia_text);
-        gen_rut = (Button)findViewById(R.id.gen_rut);
+        nombre = (TextView) findViewById(R.id.Nombre_vet_text);
+        direccion = (TextView) findViewById(R.id.direccion_vet_text);
+        contacto = (TextView) findViewById(R.id.contacto_vet_text);
+        pagWeb = (TextView) findViewById(R.id.pagWeb_vet_text);
+        email = (TextView) findViewById(R.id.Email_vet_text);
+        distancia = (TextView) findViewById(R.id.Distancia_text);
+        gen_rut = (Button) findViewById(R.id.gen_rut);
 
         ub = new Ubicacion(this);
-        mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.fragment);
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
         mapFragment.getMapAsync(this);
         Bundle extras = getIntent().getExtras();
         veterinario = extras.getParcelable("vet");
 
         nombre.setText(veterinario.getNombre());
         direccion.setText(veterinario.getDireccion());
-        if(veterinario.getTelefono().isEmpty()){
+        if (veterinario.getTelefono().isEmpty()) {
             contacto.setTextColor(R.color.black);
             contacto.setText("Numero no disponible");
-        }else{
+        } else {
             contacto.setText(veterinario.getTelefono());
         }
 
-        if(veterinario.getPagweb().isEmpty()){
+        if (veterinario.getPagweb().isEmpty()) {
             pagWeb.setTextColor(R.color.black);
             pagWeb.setText("No dispone de Página Web");
-        }else{
+        } else {
             pagWeb.setText(veterinario.getPagweb());
         }
 
-        if(veterinario.getEmail().isEmpty()){
+        if (veterinario.getEmail().isEmpty()) {
             email.setText("No Dispone de Email");
-        }else {
+        } else {
             email.setText(veterinario.getEmail());
         }
         distancia.setText(veterinario.getDistancia() + " m");
@@ -79,7 +82,7 @@ public class InfoVetActivity extends AppCompatActivity implements OnMapReadyCall
         pagWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!veterinario.getPagweb().isEmpty()) {
+                if (!veterinario.getPagweb().isEmpty()) {
                     Uri pagWeb = Uri.parse(veterinario.getPagweb());
                     Intent intent = new Intent(Intent.ACTION_VIEW, pagWeb);
                     startActivity(intent);
@@ -90,9 +93,19 @@ public class InfoVetActivity extends AppCompatActivity implements OnMapReadyCall
         contacto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Uri tel = Uri.parse("tel:"+veterinario.getTelefono());
+                Uri tel = Uri.parse("tel:" + veterinario.getTelefono());
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(tel);
+                if (ActivityCompat.checkSelfPermission(InfoVetActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
                 startActivity(intent);
             }
         });

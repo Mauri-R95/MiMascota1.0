@@ -35,7 +35,7 @@ public class CambiarPassActivity extends AppCompatActivity {
         passR = (EditText)findViewById(R.id.pass_rep_change);
         confirmar = (Button)findViewById(R.id.confirmar_change);
         dialog = new ProgressDialog(this);
-        auth =FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override

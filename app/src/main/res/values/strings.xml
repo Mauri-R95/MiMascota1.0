@@ -60,4 +60,8 @@
     <string name="macho">Macho</string>
     <string name="sexo">Sexo</string>
     <string name="cerrillos">Cerrillos</string>
+    <string name="con_nom_user">Nombre:</string>
+    <string name="con_email_user">Email:</string>
+    <string name="con_tel_user">Teléfono:</string>
+    <string name="con_btn_call">Llamar</string>
 </resources>
