@@ -7,21 +7,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.mauri_r95.mimascota10.FirebaseReference;
-import com.example.mauri_r95.mimascota10.Modelo.Favoritos;
 import com.example.mauri_r95.mimascota10.Modelo.Mascota;
 import com.example.mauri_r95.mimascota10.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by Mauri_R95 on 04-10-2017.
@@ -34,13 +28,10 @@ import com.google.firebase.database.ValueEventListener;
 public class MascotaActivity extends AppCompatActivity  {
 
     Mascota mascota;
-    ImageView foto, img_fav;
+    ImageView foto;
     TextView nombre, fecha, fecha_nac, comuna, tip_raz, tip_raz_T, categoria, sexo, tamano, desc;
     LinearLayout li_tam;
     private FirebaseDatabase database;
-    private Favoritos favoritos = new Favoritos();
-    private Button btn_fav;
-    private Boolean fav = false;
     private String activity, mas_key;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,38 +42,11 @@ public class MascotaActivity extends AppCompatActivity  {
         final Bundle extras = getIntent().getExtras();
         activity = extras.getString("activity");
         mascota =  extras.getParcelable("mascota");
-        favoritos.setMascota(extras.getString("key"));
-        favoritos.setUsuario(extras.getString("email"));
         mas_key = extras.getString("key");
         //Toast.makeText(getApplicationContext(), mas_key, Toast.LENGTH_SHORT).show();
 
-        //BOTON FAVORITO
-        img_fav = (ImageView)findViewById(R.id.img_fav_mas);
-        btn_fav = (Button)findViewById(R.id.btn_fav_mas);
-
-
         database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference();
-        //VERIFICA SI LA MASCOTA ESTA EN LA SECCION DE FAVORITOS DEL USUARIO
-        reference.child(FirebaseReference.ref_mis_favoritos).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Favoritos favorito = ds.getValue(Favoritos.class);
-                    if(favorito.getMascota().equals(favoritos.getMascota()) && favorito.getUsuario().equals(favoritos.getUsuario())){
-                        btn_fav.setText("Eliminar de Favoritos");
-                        fav = true;
-                        img_fav.setImageDrawable(getResources().getDrawable(R.drawable.favorito_act));
-                    }else{
-                        btn_fav.setText("Agregar a Favoritos");
-                        img_fav.setImageDrawable(getResources().getDrawable(R.drawable.favorito_des));
-                        fav = false;
-                    }
-                }
-            }
-
-            @Override public void onCancelled(DatabaseError databaseError) {}
-        });
         //FOTO
         foto = (ImageView)findViewById(R.id.imageView_pet);
         Glide.with(MascotaActivity.this)
@@ -100,7 +64,8 @@ public class MascotaActivity extends AppCompatActivity  {
         fecha.setText(mascota.getFecha());
         //FECHA DE NACIMIENTO
         fecha_nac = (TextView)findViewById(R.id.fecha_nac);
-        fecha_nac.setText("fecha de nacimiento: " + mascota.getFechaNac());
+        fecha_nac.setText("fecha de nacimiento: "+ mascota.getFecha_nac());
+
         // COMUNA
         comuna = (TextView)findViewById(R.id.text_com_pet);
         comuna.setText(mascota.getComuna());
@@ -147,8 +112,8 @@ public class MascotaActivity extends AppCompatActivity  {
         //Toast.makeText(getApplicationContext(),""+menu.getItem(0).isChecked(),Toast.LENGTH_SHORT).show();
         //Toast.makeText(getApplicationContext(), user_key, Toast.LENGTH_SHORT).show();
         if(extras.getString("activity").equals("main")
-                || extras.getString("activity").equals("Mis Favoritos")
-                || extras.getString("activity").equals("buscar")) {
+                || extras.getString("activity").equals("buscar")
+                || extras.getString("activity").equals("tag")) {
             menu.getItem(0).setVisible(false);
         }
         return super.onCreateOptionsMenu(menu);
@@ -169,6 +134,16 @@ public class MascotaActivity extends AppCompatActivity  {
 
        // }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(activity.equals("tag")){
+            Intent intent = new Intent(MascotaActivity.this, EscanearTagActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
     }
 }
 

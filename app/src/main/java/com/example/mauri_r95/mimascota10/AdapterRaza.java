@@ -72,7 +72,7 @@ public class AdapterRaza extends RecyclerView.Adapter<AdapterRaza.RazaViewHolder
             super(itemView);
 
             nombre = (TextView)itemView.findViewById(R.id.raza_item);
-            foto = (ImageView)itemView.findViewById(R.id.img_raza_item);
+            foto = (ImageView)itemView.findViewById(R.id.imagVet);
         }
         /**
          * Metodo para cargar imagen al ImageView

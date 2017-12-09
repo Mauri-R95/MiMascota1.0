@@ -15,7 +15,8 @@ public class FirebaseReference {
     final public static String ref_raza= "raza";
     final public static String ref_region= "region";
     final public static String ref_mis_mascotas = "Mis Mascotas";
-    final public static String ref_mis_publicaciones = "Mis Publicaciones";
     final public static String ref_mis_favoritos = "Mis Favoritos";
+    final public static String ref_veterinarios = "veterinarios";
+    final public static String ref_mas_pend = "mascotas_pend";
 
 }

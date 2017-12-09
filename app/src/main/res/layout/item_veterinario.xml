@@ -1,63 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:clickable="true"
-    android:background="?attr/selectableItemBackground"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="62dp"
         android:orientation="horizontal"
         android:weightSum="1">
-    <ImageView
-        android:id="@+id/imagVet"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:srcCompat="@drawable/guardian" />
 
         <LinearLayout
-            android:layout_width="260dp"
+            android:layout_width="216dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <TextView
-                android:id="@+id/nombre_item"
+                android:id="@+id/nombre_vet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_weight="0.61" />
 
             <TextView
-                android:id="@+id/fecha_item"
+                android:id="@+id/direc_vet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/categoria_item"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textSize="18sp" />
-
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imagVet"
+            android:layout_width="55dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            app:srcCompat="@drawable/vet"
+            android:layout_weight="0.11" />
 
-            <ImageView
-                android:id="@+id/img_fav"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone"
-                />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/distance_vet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="0.88"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
 
@@ -66,5 +64,4 @@
         android:layout_width="match_parent"
         android:layout_height="2px"
         android:background="@android:color/darker_gray" />
-
 </LinearLayout>

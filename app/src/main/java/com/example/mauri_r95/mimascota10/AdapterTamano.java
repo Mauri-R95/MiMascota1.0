@@ -85,7 +85,7 @@ public class AdapterTamano extends RecyclerView.Adapter<AdapterTamano.TamanoView
             nombreT = (TextView)itemView.findViewById(R.id.nombre_item);
             abrevT = (TextView)itemView.findViewById(R.id.fecha_item);
             pesoT= (TextView)itemView.findViewById(R.id.categoria_item);
-            foto = (ImageView)itemView.findViewById(R.id.img_raza_item);
+            foto = (ImageView)itemView.findViewById(R.id.imagVet);
 
         }
         /**

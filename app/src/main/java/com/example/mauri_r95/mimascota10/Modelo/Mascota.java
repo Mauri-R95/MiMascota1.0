@@ -10,10 +10,10 @@ import android.os.Parcelable;
 
 public class Mascota implements Parcelable {
     String imagen; //
-    String imagenNom;
+    String imagen_nom;
     String nombre;//
     String fecha; //
-    String fechaNac;
+    String fecha_nac;
     String comuna; //
     String tipo; //
     String categoria;//
@@ -22,10 +22,22 @@ public class Mascota implements Parcelable {
     String descripcion; //
     String raza;//
     String usuario; //
+    String tag;
 
     public Mascota() {
     }
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public static Creator<Mascota> getCREATOR() {
+        return CREATOR;
+    }
 
     public String getImagen() {
         return imagen;
@@ -35,17 +47,21 @@ public class Mascota implements Parcelable {
         this.imagen = imagen;
     }
 
-    public String getImagenNom() {return imagenNom;}
-
-    public void setImagenNom(String imagenNom) {this.imagenNom = imagenNom;}
-
-    public static Creator<Mascota> getCREATOR() {
-        return CREATOR;
+    public String getImagen_nom() {
+        return imagen_nom;
     }
 
-    public String getFechaNac() {return fechaNac;}
+    public void setImagen_nom(String imagen_nom) {
+        this.imagen_nom = imagen_nom;
+    }
 
-    public void setFechaNac(String fechaNac) {this.fechaNac = fechaNac;}
+    public String getFecha_nac() {
+        return fecha_nac;
+    }
+
+    public void setFecha_nac(String fecha_nac) {
+        this.fecha_nac = fecha_nac;
+    }
 
     public String getNombre() {
         return nombre;
@@ -119,17 +135,21 @@ public class Mascota implements Parcelable {
         this.raza = raza;
     }
 
-    public String getUsuario() {return usuario;}
+    public String getUsuario() {
+        return usuario;
+    }
 
-    public void setUsuario(String usuario) {this.usuario = usuario;}
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
 
+    }
 
     protected Mascota(Parcel in) {
         imagen = in.readString();
-        imagenNom = in.readString();
+        imagen_nom = in.readString();
         nombre = in.readString();
         fecha = in.readString();
-        fechaNac= in.readString();
+        fecha_nac = in.readString();
         comuna = in.readString();
         tipo = in.readString();
         categoria = in.readString();
@@ -138,6 +158,7 @@ public class Mascota implements Parcelable {
         descripcion = in.readString();
         raza = in.readString();
         usuario = in.readString();
+        tag = in.readString();
     }
 
     @Override
@@ -148,10 +169,10 @@ public class Mascota implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(imagen);
-        dest.writeString(imagenNom);
+        dest.writeString(imagen_nom);
         dest.writeString(nombre);
         dest.writeString(fecha);
-        dest.writeString(fechaNac);
+        dest.writeString(fecha_nac);
         dest.writeString(comuna);
         dest.writeString(tipo);
         dest.writeString(categoria);
@@ -160,11 +181,8 @@ public class Mascota implements Parcelable {
         dest.writeString(descripcion);
         dest.writeString(raza);
         dest.writeString(usuario);
+        dest.writeString(tag);
     }
-
-    /**
-     * Metodo para pasar una clase como parametro
-     */
 
     @SuppressWarnings("unused")
     public static final Parcelable.Creator<Mascota> CREATOR = new Parcelable.Creator<Mascota>() {

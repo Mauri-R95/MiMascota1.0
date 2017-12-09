@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.mauri_r95.mimascota10.Vista.BuscarVetActivity"
-    tools:showIn="@layout/activity_buscar_vet">
+    tools:context="com.example.mauri_r95.mimascota10.Vista.CargatTagActivity"
+    android:background="@color/colorPrimary">
 
 </android.support.constraint.ConstraintLayout>

@@ -291,8 +291,13 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.publicar_anuncio) {
             agregarMascota();
         } else if (id == R.id.buscar_vet) {
+            Intent intent = new Intent(MainActivity.this, BuscarVetActivity.class);
+
+            startActivity(intent);
 
         } else if (id == R.id.scan_cod) {
+            Intent intent = new Intent(MainActivity.this, EscanearTagActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.mi_cuenta) {
             miCuenta();

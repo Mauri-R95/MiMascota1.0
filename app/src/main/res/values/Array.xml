@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="opciones">
+        <item>20 Km</item>
+        <item>40 Km</item>
+        <item>60 km</item>
+        <item>80 km</item>
+        <item>100 km</item>
+    </string-array>
+
+</resources>

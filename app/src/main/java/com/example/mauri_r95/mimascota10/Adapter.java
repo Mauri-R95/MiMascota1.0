@@ -91,7 +91,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MascotaViewHolder> imp
             nombreT = (TextView)itemView.findViewById(R.id.nombre_item);
             fechaComT = (TextView)itemView.findViewById(R.id.fecha_item);
             categoriaT = (TextView)itemView.findViewById(R.id.categoria_item);
-            foto = (ImageView)itemView.findViewById(R.id.img_raza_item);
+            foto = (ImageView)itemView.findViewById(R.id.imagVet);
             img_fav = (ImageView)itemView.findViewById(R.id.img_fav);
 
         }
