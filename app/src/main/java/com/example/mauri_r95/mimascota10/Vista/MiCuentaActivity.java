@@ -35,8 +35,8 @@ public class MiCuentaActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private String email, k_user;
     private ImageView imagen;
-    private TextView nombre, ubicacion, n_mas, n_fav, n_publ;
-    private LinearLayout mas_l, fav_l, publi_l;
+    private TextView nombre, ubicacion, n_mas, n_publ;
+    private LinearLayout mas_l, publi_l;
     private int num_mas = 0, num_fav = 0, num_publ = 0;
     private Usuario usuario;
 
@@ -53,10 +53,8 @@ public class MiCuentaActivity extends AppCompatActivity {
         nombre = (TextView)findViewById(R.id.nombre_cuenta);
         ubicacion = (TextView)findViewById(R.id.ubicacion_cuenta);
         n_mas = (TextView)findViewById(R.id.num_mascotas_cuenta);
-        n_fav = (TextView)findViewById(R.id.num_favoritos_cuenta);
         n_publ = (TextView)findViewById(R.id.num_publicaciones_cuenta);
         mas_l = (LinearLayout)findViewById(R.id.la_mis_mascotas_cuenta);
-        fav_l = (LinearLayout)findViewById(R.id.la_favoritos_cuenta);
         publi_l = (LinearLayout)findViewById(R.id.la_publicaciones_cuenta);
 
         //INICIALIZAR USUARIO
@@ -66,9 +64,10 @@ public class MiCuentaActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    usuario = ds.getValue(Usuario.class);
-                    k_user = ds.getKey();
-                    if(usuario.getEmail().equals(email)){
+                    Usuario user = ds.getValue(Usuario.class);
+                    if(user.getEmail().equals(email)){
+                        k_user = ds.getKey();
+                        usuario = user;
                         Glide.with(getApplicationContext())
                                 .load(usuario.getImagen())
                                 .crossFade()
@@ -77,7 +76,7 @@ public class MiCuentaActivity extends AppCompatActivity {
                                 .into(imagen);
                         nombre.setText(usuario.getNombre().toString());
                         if(usuario.getComuna().length() != 0){
-                            ubicacion.setText(usuario.getComuna().toString());
+                            ubicacion.setText(usuario.getRegion()+"\n"+usuario.getComuna().toString());
                         }else{
                             ubicacion.setText("No Especificado");
                         }
@@ -90,7 +89,7 @@ public class MiCuentaActivity extends AppCompatActivity {
 
             }
         });
-
+        //extrae la cantidad de mascotas que tiene en mis mascotas el usuario
         reference.child(FirebaseReference.ref_mis_mascotas).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -106,21 +105,7 @@ public class MiCuentaActivity extends AppCompatActivity {
             @Override public void onCancelled(DatabaseError databaseError) {}
         });
 
-        reference.child(FirebaseReference.ref_mis_favoritos).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                num_fav = 0;
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Favoritos favoritos = ds.getValue(Favoritos.class);
-                        if(favoritos.getUsuario().equals(email)){
-                            num_fav++;
-                        }
-                }
-                n_fav.setText(""+num_fav);
-            }
-            @Override public void onCancelled(DatabaseError databaseError) {}
-        });
-
+        //extrae la cantidad de mascotas que tiene en mis publicaciones el usuario
         reference.child(FirebaseReference.ref_mascotas).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -134,13 +119,6 @@ public class MiCuentaActivity extends AppCompatActivity {
                 n_publ.setText(""+num_publ);
             }
             @Override public void onCancelled(DatabaseError databaseError) {}
-        });
-
-        fav_l.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                misActivity("Mis Favoritos");
-            }
         });
 
         mas_l.setOnClickListener(new View.OnClickListener() {

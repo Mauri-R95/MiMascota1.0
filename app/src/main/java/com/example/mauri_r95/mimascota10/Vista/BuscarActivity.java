@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.example.mauri_r95.mimascota10.R;
 
@@ -24,11 +25,12 @@ import com.example.mauri_r95.mimascota10.R;
  * @since 1.0
  * @version 1.1 Cambios hechos
  */
-public class BuscarActivity extends AppCompatActivity implements View.OnClickListener{
+public class BuscarActivity extends AppCompatActivity{
 
     private TextView categoria, tip_mas, raza, raza_tex, tamano, comuna;
     private Switch sexo_s;
-    private Button macho,hembra, buscar;
+    private ToggleButton sexo;
+    private Button buscar;
     private LinearLayout li_cat, li_tip_mas, li_raza, li_tam, li_com;
     private View v_raza, v_tam;
     private Boolean statesex = true;
@@ -45,11 +47,9 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
         raza = (TextView)findViewById(R.id.Raza_b);
         raza_tex = (TextView)findViewById(R.id.raza_tex_b);
         tamano = (TextView)findViewById(R.id.tamano_b);
-        //edad = (TextView)findViewById(R.id.edad_b);
         comuna = (TextView)findViewById(R.id.comuna_b);
         sexo_s = (Switch)findViewById(R.id.switch_sexo_b);
-        macho = (Button)findViewById(R.id.macho_b);
-        hembra = (Button)findViewById(R.id.hembra_b);
+        sexo = (ToggleButton)findViewById(R.id.sexo_bus);
         buscar = (Button)findViewById(R.id.btn_buscar);
         li_cat = (LinearLayout)findViewById(R.id.li_categ_b);
         li_tip_mas = (LinearLayout)findViewById(R.id.li_tip_b);
@@ -66,12 +66,7 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
         if(extras != null){
             categoria.setText(extras.getString("categoria"));
             sexo_s.setChecked(extras.getBoolean("sexo_s"));
-            statesex = extras.getBoolean("sexo");
-            if (statesex) {
-                getSexo(true);
-            } else {
-                getSexo(false);
-            }
+            sexo.setChecked(extras.getBoolean("sexo"));
             tip_mas.setText(extras.getString("tipo"));
             raza.setText(extras.getString("raza"));
             tamano.setText(extras.getString("tamano"));
@@ -99,156 +94,66 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
             v_raza.setVisibility(View.GONE);
 
         }
-
-
         //Categoria
         li_cat.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BuscarActivity.this, CategoriaActivity.class);
-                intent.putExtra("categoria", categoria.getText().toString());
-                intent.putExtra("sexo_s", sexo_s.isChecked());
-                intent.putExtra("sexo", statesex);
-                intent.putExtra("tipo", tip_mas.getText().toString());
-                intent.putExtra("raza", raza.getText().toString());
-                intent.putExtra("tamano", tamano.getText().toString());
-                //intent.putExtra("edad",edad.getText().toString());
-                intent.putExtra("comuna", comuna.getText().toString());
-                intent.putExtra("activity", "buscar");
-                startActivity(intent);
+            public void onClick(View view) {
+                pasarParametros(CategoriaActivity.class);
             }
         });
-        //sexo
-        macho.setOnClickListener(this);
-        hembra.setOnClickListener(this);
-
         //Tipo de mascota
         li_tip_mas.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BuscarActivity.this, TipoMascotaActivity.class);
-                intent.putExtra("categoria", categoria.getText().toString());
-                intent.putExtra("sexo_s", sexo_s.isChecked());
-                intent.putExtra("sexo", statesex);
-                intent.putExtra("tipo", tip_mas.getText().toString());
-                intent.putExtra("raza", raza.getText().toString());
-                intent.putExtra("tamano", tamano.getText().toString());
-                //intent.putExtra("edad",edad.getText().toString());
-                intent.putExtra("comuna", comuna.getText().toString());
-                intent.putExtra("activity", "buscar");
-                startActivity(intent);
+            public void onClick(View view) {
+                pasarParametros(TipoMascotaActivity.class);
             }
         });
         //Raza
         li_raza.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BuscarActivity.this, RazaActivity.class);
-                intent.putExtra("categoria", categoria.getText().toString());
-                intent.putExtra("sexo_s", sexo_s.isChecked());
-                intent.putExtra("sexo", statesex);
-                intent.putExtra("tipo", tip_mas.getText().toString());
-                intent.putExtra("raza", raza.getText().toString());
-                intent.putExtra("tamano", tamano.getText().toString());
-                //intent.putExtra("edad",edad.getText().toString());
-                intent.putExtra("comuna", comuna.getText().toString());
-                intent.putExtra("activity", "buscar");
-                startActivity(intent);
+            public void onClick(View view) {
+                pasarParametros(RazaActivity.class);
             }
         });
         //Tamaño
         li_tam.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BuscarActivity.this, TamanoActivity.class);
-                intent.putExtra("categoria", categoria.getText().toString());
-                intent.putExtra("sexo_s", sexo_s.isChecked());
-                intent.putExtra("sexo", statesex);
-                intent.putExtra("tipo", tip_mas.getText().toString());
-                intent.putExtra("raza", raza.getText().toString());
-                intent.putExtra("tamano", tamano.getText().toString());
-                //intent.putExtra("edad",edad.getText().toString());
-                intent.putExtra("comuna", comuna.getText().toString());
-                intent.putExtra("activity", "buscar");
-                startActivity(intent);
+            public void onClick(View view) {
+                pasarParametros(TamanoActivity.class);
             }
         });
         //Comuna
         li_com.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BuscarActivity.this, RegionActivity.class);
-                intent.putExtra("categoria", categoria.getText().toString());
-                intent.putExtra("sexo_s", sexo_s.isChecked());
-                intent.putExtra("sexo", statesex);
-                intent.putExtra("tipo", tip_mas.getText().toString());
-                intent.putExtra("raza", raza.getText().toString());
-                intent.putExtra("tamano", tamano.getText().toString());
-                //intent.putExtra("edad",edad.getText().toString());
-                intent.putExtra("comuna", comuna.getText().toString());
-                intent.putExtra("activity", "buscar");
-                startActivity(intent);
+            public void onClick(View view) {
+                pasarParametros(RegionActivity.class);
             }
         });
 
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                categoria_s = categoria.getText().toString();
-                tip_mas_s = tip_mas.getText().toString();
-                raza_s = raza.getText().toString();
-                tamano_s = tamano.getText().toString();
-                comuna_s = comuna.getText().toString();
-
-                Intent intent = new Intent(BuscarActivity.this, MisActivity.class);
-                intent.putExtra("categoria", categoria_s);
-                intent.putExtra("sexo_s", sexo_s.isChecked());
-                intent.putExtra("sexo", sexo_st);
-                intent.putExtra("tipo", tip_mas_s);
-                intent.putExtra("raza", raza_s);
-                intent.putExtra("tamano", tamano_s);
-                intent.putExtra("comuna", comuna_s);
-                intent.putExtra("activity", "buscar");
-                startActivity(intent);
-
-
+                pasarParametros(MisActivity.class);
             }
         });
 
     }
 
-    public void getSexo (Boolean state){
-        if(state) {
-            macho.setBackground(getDrawable(R.drawable.boton_redondo));
-            macho.setTextColor(Color.BLACK);
-            Drawable hembraD = getDrawable(R.drawable.boton_red_gris);
-            hembra.setBackground(hembraD);
-            hembra.setTextColor(Color.WHITE);
-            sexo_st = macho.getText().toString();
-            statesex = true;
-
-        }else {
-            macho.setBackground(getDrawable(R.drawable.boton_red_gris));
-            macho.setTextColor(Color.WHITE);
-            hembra.setBackground(getDrawable(R.drawable.boton_redondo));
-            hembra.setTextColor(Color.BLACK);
-            sexo_st = hembra.getText().toString();
-            statesex = false;
-
-
-        }
+    public void pasarParametros(Class activityClass){
+        Intent intent = new Intent( BuscarActivity.this, activityClass);
+        intent.putExtra("categoria", categoria.getText().toString());
+        intent.putExtra("sexo_s", sexo_s.isChecked());
+        intent.putExtra("sexo", sexo.isChecked());
+        intent.putExtra("tipo", tip_mas.getText().toString());
+        intent.putExtra("raza", raza.getText().toString());
+        intent.putExtra("tamano", tamano.getText().toString());
+        //intent.putExtra("edad",edad.getText().toString());
+        intent.putExtra("comuna", comuna.getText().toString());
+        intent.putExtra("activity", "buscar");
+        startActivity(intent);
 
     }
 
-
-    @Override
-    public void onClick(View v) {
-        if(v.getId() == R.id.macho_b){
-            getSexo(true);
-        }else if (v.getId() == R.id.hembra_b){
-            getSexo(false);
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -264,7 +169,7 @@ public class BuscarActivity extends AppCompatActivity implements View.OnClickLis
         if( id == R.id.editar_mascota){
             categoria.setText(R.string.categoria);
             sexo_s.setChecked(false);
-            getSexo(true);
+            sexo.setChecked(false);
             tip_mas.setText(R.string.tipo_mascota);
             li_tam.setVisibility(View.GONE);
             v_tam.setVisibility(View.GONE);

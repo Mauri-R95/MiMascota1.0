@@ -6,9 +6,12 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -52,6 +55,7 @@ public class MascotaActivity extends AppCompatActivity  {
     TextView nombre_user, email_user, tel_user;
     String nombre_u, email_u, tel_u;
     Button llamar;
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,7 +109,9 @@ public class MascotaActivity extends AppCompatActivity  {
             }
         });
 
-
+        if(!activity.equals("main") && !activity.equals("tag")){
+            contacto.setVisibility(View.GONE);
+        }
 
         contacto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +121,7 @@ public class MascotaActivity extends AppCompatActivity  {
                 View mView = getLayoutInflater().inflate(R.layout.dialog_contacto_mas, null);
                 TextView nombre_user = (TextView)mView.findViewById(R.id.con_nom_user);
                 TextView email_user = (TextView) mView.findViewById(R.id.con_email_user);
-                TextView tel_user = (TextView)mView.findViewById(R.id.con_tel_user);
+                final TextView tel_user = (TextView)mView.findViewById(R.id.con_tel_user);
                 Button llamar = (Button)mView.findViewById(R.id.con_btn_call);
 
                 nombre_user.setText("Nombre: "+nombre_u);
@@ -126,18 +132,26 @@ public class MascotaActivity extends AppCompatActivity  {
                     @Override
                     public void onClick(View view) {
                         if(!tel_u.equals("No Disponible")) {
-                            Uri tel = Uri.parse("tel:" + tel_u);
+                            Uri tel = Uri.parse("tel:"+tel_user);
                             Intent intent = new Intent(Intent.ACTION_CALL);
                             intent.setData(tel);
-                            if (ActivityCompat.checkSelfPermission(MascotaActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                                // TODO: Consider calling
-                                //    ActivityCompat#requestPermissions
-                                // here to request the missing permissions, and then overriding
-                                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                //                                          int[] grantResults)
-                                // to handle the case where the user grants the permission. See the documentation
-                                // for ActivityCompat#requestPermissions for more details.
-                                return;
+                            int permissionCheck = ContextCompat.checkSelfPermission(
+                                    getApplicationContext(), Manifest.permission.CALL_PHONE);
+                            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                                Log.i("Mensaje", "No se tiene permiso para realizar llamadas telefónicas.");
+                                ActivityCompat.requestPermissions( MascotaActivity.this , new String[]{Manifest.permission.CALL_PHONE}, 225);
+                            } else {
+                                Log.i("Mensaje", "Se tiene permiso para realizar llamadas!");
+                            }
+                            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                                    // Se tiene permiso
+                                }else{
+                                    ActivityCompat.requestPermissions(MascotaActivity.this,new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CODE_ASK_PERMISSIONS);
+                                    return;
+                                }
+                            }else{
+                                // No se necesita requerir permiso OS menos a 6.0.
                             }
                             startActivity(intent);
                         }else{
@@ -150,6 +164,22 @@ public class MascotaActivity extends AppCompatActivity  {
                 dialog.show();
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode){
+            case REQUEST_CODE_ASK_PERMISSIONS:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    // El usuario acepto los permisos.
+                    Toast.makeText(this, "Gracias, aceptaste los permisos requeridos para el correcto funcionamiento de esta aplicación.", Toast.LENGTH_SHORT).show();
+                }else{
+                    // Permiso denegado.
+                    Toast.makeText(this, "No se aceptó permisos", Toast.LENGTH_SHORT).show();
+                }
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 
 

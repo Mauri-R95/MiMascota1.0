@@ -347,7 +347,7 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
                 String[] values = strDate.split("/",0);
 
                 mascota.setFecha(strDate);
-                Toast.makeText(getApplicationContext(), mascota.getFecha(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), mascota.getFecha(), Toast.LENGTH_SHORT).show();
                 //IMAGEN
                 if (!mascota.getImagen().isEmpty()) {
                     mascota.setNombre(nombre.getText().toString());
@@ -490,8 +490,8 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
 
 
             if(!activity.equals("main")){ //si se viene de editar mascota
-                if(!mascota.getImagen_nom().isEmpty()){ //si se tiene imagen
-                    mStorage.child("mascotas").child(mascota.getImagen_nom()).delete(); //borrar la imagen actual para actualizar a la nueva
+                if(!mascota.getImagen_nom().equals(imagen_nom_res) && state_imagen){ //si se tiene imagen
+                    mStorage.child("mascotas").child(mascota.getImagen_nom()).delete(); //borrar la imagen actual para actualizar a la nueva verificando
                 }
             }else{ //si se viene de agregar mascota
                 if(!mascota.getImagen_nom().isEmpty() && state_imagen){ //verifica si la imagen no esta vacia y si ya subio una imagen anterior
@@ -635,7 +635,7 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
     public void onBackPressed() {
         Bundle extras = getIntent().getExtras();
         if(!activity.equals("main")){
-            if(!mascota.getImagen_nom().isEmpty()){
+            if(!mascota.getImagen_nom().equals(imagen_nom_res)){
                 mStorage.child("mascotas").child(mascota.getImagen_nom()).delete();
             }
         }else{

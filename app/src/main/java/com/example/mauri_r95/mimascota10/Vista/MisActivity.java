@@ -37,6 +37,8 @@ public class MisActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Mascota> mascotaList;
     private List<String> mas_key;
+    private String categoriaB, sexoB, tipoB, razaB, tamanoB, comunaB;
+    private Boolean sexoSB, sexoBT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,50 +97,28 @@ public class MisActivity extends AppCompatActivity {
 
                 @Override public void onCancelled(DatabaseError databaseError) {}
             });
-        }else if (activity.equals("Mis Favoritos")){
-            ref.child(FirebaseReference.ref_mis_favoritos).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        Favoritos favorito = ds.getValue(Favoritos.class);
-                        if(favorito.getUsuario().equals(email)){
-                            mas_key.add(favorito.getMascota());
-
-                        }
-                    }
-                    mascotaList.removeAll(mascotaList);
-                    for(String str : mas_key){
-                        ref.child(FirebaseReference.ref_mascotas).child(str).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                Mascota mascota = dataSnapshot.getValue(Mascota.class);
-                                mascotaList.add(mascota);
-                                adapter.notifyDataSetChanged();
-                            }
-
-                            @Override public void onCancelled(DatabaseError databaseError) {}
-                        });
-                    }
-                }
-                @Override public void onCancelled(DatabaseError databaseError) {}
-            });
-
         }else if (activity.equals("buscar")){
             Bundle extras_b = getIntent().getExtras();
-            final String categoria = extras_b.getString("categoria");
-            final boolean sex = extras.getBoolean("sexo_s");
-            final String sexo = extras.getString("sexo");
-            final String tipo = extras.getString("tipo");
-            final String raza = extras.getString("raza");
-            final String tamano = extras.getString("tamano");
-            final String comuna = extras.getString("comuna");
-            Log.i("categoria", categoria);
-            Log.i("sex", ""+sex);
-            Log.i("sexo", sexo);
-            Log.i("tipo", tipo);
-            Log.i("raza", raza);
-            Log.i("tamano", tamano);
-            Log.i("comuna", comuna);
+            categoriaB = extras_b.getString("categoria");
+            sexoSB = extras.getBoolean("sexo_s");
+            sexoBT = extras.getBoolean("sexo");
+            if(!sexoBT){
+                sexoB = "Macho";
+            }else{
+                sexoB = "Hembra";
+            }
+
+            tipoB = extras.getString("tipo");
+            razaB = extras.getString("raza");
+            tamanoB = extras.getString("tamano");
+            comunaB = extras.getString("comuna");
+            Log.i("categoria", categoriaB);
+            Log.i("sex", ""+sexoSB);
+            Log.i("sexo", sexoB);
+            Log.i("tipo", tipoB);
+            Log.i("raza", razaB);
+            Log.i("tamano", tamanoB);
+            Log.i("comuna", comunaB);
 
 
             ref.child(FirebaseReference.ref_mascotas).addValueEventListener(new ValueEventListener() {
@@ -148,19 +128,19 @@ public class MisActivity extends AppCompatActivity {
                     mascotaList.removeAll(mascotaList);
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         Mascota mascota = ds.getValue(Mascota.class);
-                        if(!categoria.equals("Categoria")){
-                            if(mascota.getCategoria().equals(categoria)){
-                                if(sex){
-                                    if(mascota.getSexo().equals(sexo)) {
-                                        if (!tipo.equals("Tipo de Mascota")) {
-                                            if (mascota.getTipo().equals(tipo)) {
-                                                if(tipo.equals("Perro") || tipo.equals("Ave")) {
-                                                    if (!raza.equals("Raza") || !raza.equals("Tipo de Ave")) {
-                                                        if (mascota.getRaza().equals(raza)) {
-                                                            if (!tamano.equals("Tamaño")) {
-                                                                if (mascota.getTamano().equals(tamano)) {
-                                                                    if (!comuna.equals("Comuna")) {
-                                                                        if (mascota.getComuna().equals(comuna)) {
+                        if(!categoriaB.equals("Categoria")){
+                            if(mascota.getCategoria().equals(categoriaB)){
+                                if(sexoSB){
+                                    if(mascota.getSexo().equals(sexoBT)) {
+                                        if (!tipoB.equals("Tipo de Mascota")) {
+                                            if (mascota.getTipo().equals(tipoB)) {
+                                                if(tipoB.equals("Perro") || tipoB.equals("Ave")) {
+                                                    if (!razaB.equals("Raza") || !razaB.equals("Tipo de Ave")) {
+                                                        if (mascota.getRaza().equals(razaB)) {
+                                                            if (!tamanoB.equals("Tamaño")) {
+                                                                if (mascota.getTamano().equals(tamanoB)) {
+                                                                    if (!comunaB.equals("Comuna")) {
+                                                                        if (mascota.getComuna().equals(comunaB)) {
                                                                             mascotaList.add(mascota);
                                                                             mas_key.add(ds.getKey());
                                                                         }
@@ -170,8 +150,8 @@ public class MisActivity extends AppCompatActivity {
                                                                     }
                                                                 }
                                                             } else {
-                                                                if (!comuna.equals("Comuna")) {
-                                                                    if (mascota.getComuna().equals(comuna)) {
+                                                                if (!comunaB.equals("Comuna")) {
+                                                                    if (mascota.getComuna().equals(comunaB)) {
                                                                         mascotaList.add(mascota);
                                                                         mas_key.add(ds.getKey());
                                                                     }
@@ -182,11 +162,11 @@ public class MisActivity extends AppCompatActivity {
                                                             }
                                                         }
                                                     } else {
-                                                        if (tipo.equals("Perro")) {
-                                                            if (!tamano.equals("Tamaño")) {
-                                                                if (mascota.getTamano().equals(tamano)) {
-                                                                    if (!comuna.equals("Comuna")) {
-                                                                        if (mascota.getComuna().equals(comuna)) {
+                                                        if (tipoB.equals("Perro")) {
+                                                            if (!tamanoB.equals("Tamaño")) {
+                                                                if (mascota.getTamano().equals(tamanoB)) {
+                                                                    if (!comunaB.equals("Comuna")) {
+                                                                        if (mascota.getComuna().equals(comunaB)) {
                                                                             mascotaList.add(mascota);
                                                                             mas_key.add(ds.getKey());
                                                                         }
@@ -196,8 +176,8 @@ public class MisActivity extends AppCompatActivity {
                                                                     }
                                                                 }
                                                             } else {
-                                                                if (!comuna.equals("Comuna")) {
-                                                                    if (mascota.getComuna().equals(comuna)) {
+                                                                if (!comunaB.equals("Comuna")) {
+                                                                    if (mascota.getComuna().equals(comunaB)) {
                                                                         mascotaList.add(mascota);
                                                                         mas_key.add(ds.getKey());
                                                                     }
@@ -206,9 +186,9 @@ public class MisActivity extends AppCompatActivity {
                                                                     mas_key.add(ds.getKey());
                                                                 }
                                                             }
-                                                        } else if (tipo.equals("Tipo de Ave")) {
-                                                            if (!comuna.equals("Comuna")) {
-                                                                if (mascota.getComuna().equals(comuna)) {
+                                                        } else if (tipoB.equals("Tipo de Ave")) {
+                                                            if (!comunaB.equals("Comuna")) {
+                                                                if (mascota.getComuna().equals(comunaB)) {
                                                                     mascotaList.add(mascota);
                                                                     mas_key.add(ds.getKey());
                                                                 }
@@ -220,8 +200,8 @@ public class MisActivity extends AppCompatActivity {
                                                         }
                                                     }
                                                 }else{
-                                                    if (!comuna.equals("Comuna")) {
-                                                        if (mascota.getComuna().equals(comuna)) {
+                                                    if (!comunaB.equals("Comuna")) {
+                                                        if (mascota.getComuna().equals(comunaB)) {
                                                             mascotaList.add(mascota);
                                                             mas_key.add(ds.getKey());
                                                         }
@@ -232,8 +212,8 @@ public class MisActivity extends AppCompatActivity {
                                                 }
                                             }
                                         } else {
-                                            if (!comuna.equals("Comuna")) {
-                                                if (mascota.getComuna().equals(comuna)) {
+                                            if (!comunaB.equals("Comuna")) {
+                                                if (mascota.getComuna().equals(comunaB)) {
                                                     mascotaList.add(mascota);
                                                     mas_key.add(ds.getKey());
                                                 }
@@ -244,15 +224,15 @@ public class MisActivity extends AppCompatActivity {
                                         }
                                     }
                                 }else{
-                                    if (!tipo.equals("Tipo de Mascota")) {
-                                        if (mascota.getTipo().equals(tipo)) {
-                                            if(tipo.equals("Perro") || tipo.equals("Ave")) {
-                                                if (!raza.equals("Raza") || !raza.equals("Tipo de Ave")) {
-                                                    if (mascota.getRaza().equals(raza)) {
-                                                        if (!tamano.equals("Tamaño")) {
-                                                            if (mascota.getTamano().equals(tamano)) {
-                                                                if (!comuna.equals("Comuna")) {
-                                                                    if (mascota.getComuna().equals(comuna)) {
+                                    if (!tipoB.equals("Tipo de Mascota")) {
+                                        if (mascota.getTipo().equals(tipoB)) {
+                                            if(tipoB.equals("Perro") || tipoB.equals("Ave")) {
+                                                if (!razaB.equals("Raza") || !razaB.equals("Tipo de Ave")) {
+                                                    if (mascota.getRaza().equals(razaB)) {
+                                                        if (!tamanoB.equals("Tamaño")) {
+                                                            if (mascota.getTamano().equals(tamanoB)) {
+                                                                if (!comunaB.equals("Comuna")) {
+                                                                    if (mascota.getComuna().equals(comunaB)) {
                                                                         mascotaList.add(mascota);
                                                                         mas_key.add(ds.getKey());
                                                                     }
@@ -262,8 +242,8 @@ public class MisActivity extends AppCompatActivity {
                                                                 }
                                                             }
                                                         } else {
-                                                            if (!comuna.equals("Comuna")) {
-                                                                if (mascota.getComuna().equals(comuna)) {
+                                                            if (!comunaB.equals("Comuna")) {
+                                                                if (mascota.getComuna().equals(comunaB)) {
                                                                     mascotaList.add(mascota);
                                                                     mas_key.add(ds.getKey());
                                                                 }
@@ -274,11 +254,11 @@ public class MisActivity extends AppCompatActivity {
                                                         }
                                                     }
                                                 } else {
-                                                    if (tipo.equals("Perro")) {
-                                                        if (!tamano.equals("Tamaño")) {
-                                                            if (mascota.getTamano().equals(tamano)) {
-                                                                if (!comuna.equals("Comuna")) {
-                                                                    if (mascota.getComuna().equals(comuna)) {
+                                                    if (tipoB.equals("Perro")) {
+                                                        if (!tamanoB.equals("Tamaño")) {
+                                                            if (mascota.getTamano().equals(tamanoB)) {
+                                                                if (!comunaB.equals("Comuna")) {
+                                                                    if (mascota.getComuna().equals(comunaB)) {
                                                                         mascotaList.add(mascota);
                                                                         mas_key.add(ds.getKey());
                                                                     }
@@ -288,8 +268,8 @@ public class MisActivity extends AppCompatActivity {
                                                                 }
                                                             }
                                                         } else {
-                                                            if (!comuna.equals("Comuna")) {
-                                                                if (mascota.getComuna().equals(comuna)) {
+                                                            if (!comunaB.equals("Comuna")) {
+                                                                if (mascota.getComuna().equals(comunaB)) {
                                                                     mascotaList.add(mascota);
                                                                     mas_key.add(ds.getKey());
                                                                 }
@@ -298,9 +278,9 @@ public class MisActivity extends AppCompatActivity {
                                                                 mas_key.add(ds.getKey());
                                                             }
                                                         }
-                                                    } else if (tipo.equals("Tipo de Ave")) {
-                                                        if (!comuna.equals("Comuna")) {
-                                                            if (mascota.getComuna().equals(comuna)) {
+                                                    } else if (tipoB.equals("Tipo de Ave")) {
+                                                        if (!comunaB.equals("Comuna")) {
+                                                            if (mascota.getComuna().equals(comunaB)) {
                                                                 mascotaList.add(mascota);
                                                                 mas_key.add(ds.getKey());
                                                             }
@@ -312,8 +292,8 @@ public class MisActivity extends AppCompatActivity {
                                                     }
                                                 }
                                             }else{
-                                                if (!comuna.equals("Comuna")) {
-                                                    if (mascota.getComuna().equals(comuna)) {
+                                                if (!comunaB.equals("Comuna")) {
+                                                    if (mascota.getComuna().equals(comunaB)) {
                                                         mascotaList.add(mascota);
                                                         mas_key.add(ds.getKey());
                                                     }
@@ -324,8 +304,8 @@ public class MisActivity extends AppCompatActivity {
                                             }
                                         }
                                     } else {
-                                        if (!comuna.equals("Comuna")) {
-                                            if (mascota.getComuna().equals(comuna)) {
+                                        if (!comunaB.equals("Comuna")) {
+                                            if (mascota.getComuna().equals(comunaB)) {
                                                 mascotaList.add(mascota);
                                                 mas_key.add(ds.getKey());
                                             }
@@ -337,17 +317,17 @@ public class MisActivity extends AppCompatActivity {
                                 }
                             }
                         }else{
-                            if(sex){
-                                if(mascota.getSexo().equals(sexo)) {
-                                    if (!tipo.equals("Tipo de Mascota")) {
-                                        if (mascota.getTipo().equals(tipo)) {
-                                            if(tipo.equals("Perro") || tipo.equals("Ave")) {
-                                                if (!raza.equals("Raza") || !raza.equals("Tipo de Ave")) {
-                                                    if (mascota.getRaza().equals(raza)) {
-                                                        if (!tamano.equals("Tamaño")) {
-                                                            if (mascota.getTamano().equals(tamano)) {
-                                                                if (!comuna.equals("Comuna")) {
-                                                                    if (mascota.getComuna().equals(comuna)) {
+                            if(sexoSB){
+                                if(mascota.getSexo().equals(sexoBT)) {
+                                    if (!tipoB.equals("Tipo de Mascota")) {
+                                        if (mascota.getTipo().equals(tipoB)) {
+                                            if(tipoB.equals("Perro") || tipoB.equals("Ave")) {
+                                                if (!razaB.equals("Raza") || !razaB.equals("Tipo de Ave")) {
+                                                    if (mascota.getRaza().equals(razaB)) {
+                                                        if (!tamanoB.equals("Tamaño")) {
+                                                            if (mascota.getTamano().equals(tamanoB)) {
+                                                                if (!comunaB.equals("Comuna")) {
+                                                                    if (mascota.getComuna().equals(comunaB)) {
                                                                         mascotaList.add(mascota);
                                                                         mas_key.add(ds.getKey());
                                                                     }
@@ -357,8 +337,8 @@ public class MisActivity extends AppCompatActivity {
                                                                 }
                                                             }
                                                         } else {
-                                                            if (!comuna.equals("Comuna")) {
-                                                                if (mascota.getComuna().equals(comuna)) {
+                                                            if (!comunaB.equals("Comuna")) {
+                                                                if (mascota.getComuna().equals(comunaB)) {
                                                                     mascotaList.add(mascota);
                                                                     mas_key.add(ds.getKey());
                                                                 }
@@ -369,11 +349,11 @@ public class MisActivity extends AppCompatActivity {
                                                         }
                                                     }
                                                 } else {
-                                                    if (tipo.equals("Perro")) {
-                                                        if (!tamano.equals("Tamaño")) {
-                                                            if (mascota.getTamano().equals(tamano)) {
-                                                                if (!comuna.equals("Comuna")) {
-                                                                    if (mascota.getComuna().equals(comuna)) {
+                                                    if (tipoB.equals("Perro")) {
+                                                        if (!tamanoB.equals("Tamaño")) {
+                                                            if (mascota.getTamano().equals(tamanoB)) {
+                                                                if (!comunaB.equals("Comuna")) {
+                                                                    if (mascota.getComuna().equals(comunaB)) {
                                                                         mascotaList.add(mascota);
                                                                         mas_key.add(ds.getKey());
                                                                     }
@@ -383,8 +363,8 @@ public class MisActivity extends AppCompatActivity {
                                                                 }
                                                             }
                                                         } else {
-                                                            if (!comuna.equals("Comuna")) {
-                                                                if (mascota.getComuna().equals(comuna)) {
+                                                            if (!comunaB.equals("Comuna")) {
+                                                                if (mascota.getComuna().equals(comunaB)) {
                                                                     mascotaList.add(mascota);
                                                                     mas_key.add(ds.getKey());
                                                                 }
@@ -393,9 +373,9 @@ public class MisActivity extends AppCompatActivity {
                                                                 mas_key.add(ds.getKey());
                                                             }
                                                         }
-                                                    } else if (tipo.equals("Tipo de Ave")) {
-                                                        if (!comuna.equals("Comuna")) {
-                                                            if (mascota.getComuna().equals(comuna)) {
+                                                    } else if (tipoB.equals("Tipo de Ave")) {
+                                                        if (!comunaB.equals("Comuna")) {
+                                                            if (mascota.getComuna().equals(comunaB)) {
                                                                 mascotaList.add(mascota);
                                                                 mas_key.add(ds.getKey());
                                                             }
@@ -407,8 +387,8 @@ public class MisActivity extends AppCompatActivity {
                                                     }
                                                 }
                                             }else{
-                                                if (!comuna.equals("Comuna")) {
-                                                    if (mascota.getComuna().equals(comuna)) {
+                                                if (!comunaB.equals("Comuna")) {
+                                                    if (mascota.getComuna().equals(comunaB)) {
                                                         mascotaList.add(mascota);
                                                         mas_key.add(ds.getKey());
                                                     }
@@ -419,8 +399,8 @@ public class MisActivity extends AppCompatActivity {
                                             }
                                         }
                                     } else {
-                                        if (!comuna.equals("Comuna")) {
-                                            if (mascota.getComuna().equals(comuna)) {
+                                        if (!comunaB.equals("Comuna")) {
+                                            if (mascota.getComuna().equals(comunaB)) {
                                                 mascotaList.add(mascota);
                                                 mas_key.add(ds.getKey());
                                             }
@@ -431,15 +411,15 @@ public class MisActivity extends AppCompatActivity {
                                     }
                                 }
                             }else{
-                                if (!tipo.equals("Tipo de Mascota")) {
-                                    if (mascota.getTipo().equals(tipo)) {
-                                        if(tipo.equals("Perro") || tipo.equals("Ave")) {
-                                            if (!raza.equals("Raza") || !raza.equals("Tipo de Ave")) {
-                                                if (mascota.getRaza().equals(raza)) {
-                                                    if (!tamano.equals("Tamaño")) {
-                                                        if (mascota.getTamano().equals(tamano)) {
-                                                            if (!comuna.equals("Comuna")) {
-                                                                if (mascota.getComuna().equals(comuna)) {
+                                if (!tipoB.equals("Tipo de Mascota")) {
+                                    if (mascota.getTipo().equals(tipoB)) {
+                                        if(tipoB.equals("Perro") || tipoB.equals("Ave")) {
+                                            if (!razaB.equals("Raza") || !razaB.equals("Tipo de Ave")) {
+                                                if (mascota.getRaza().equals(razaB)) {
+                                                    if (!tamanoB.equals("Tamaño")) {
+                                                        if (mascota.getTamano().equals(tamanoB)) {
+                                                            if (!comunaB.equals("Comuna")) {
+                                                                if (mascota.getComuna().equals(comunaB)) {
                                                                     mascotaList.add(mascota);
                                                                     mas_key.add(ds.getKey());
                                                                 }
@@ -449,8 +429,8 @@ public class MisActivity extends AppCompatActivity {
                                                             }
                                                         }
                                                     } else {
-                                                        if (!comuna.equals("Comuna")) {
-                                                            if (mascota.getComuna().equals(comuna)) {
+                                                        if (!comunaB.equals("Comuna")) {
+                                                            if (mascota.getComuna().equals(comunaB)) {
                                                                 mascotaList.add(mascota);
                                                                 mas_key.add(ds.getKey());
                                                             }
@@ -461,11 +441,11 @@ public class MisActivity extends AppCompatActivity {
                                                     }
                                                 }
                                             } else {
-                                                if (tipo.equals("Perro")) {
-                                                    if (!tamano.equals("Tamaño")) {
-                                                        if (mascota.getTamano().equals(tamano)) {
-                                                            if (!comuna.equals("Comuna")) {
-                                                                if (mascota.getComuna().equals(comuna)) {
+                                                if (tipoB.equals("Perro")) {
+                                                    if (!tamanoB.equals("Tamaño")) {
+                                                        if (mascota.getTamano().equals(tamanoB)) {
+                                                            if (!comunaB.equals("Comuna")) {
+                                                                if (mascota.getComuna().equals(comunaB)) {
                                                                     mascotaList.add(mascota);
                                                                     mas_key.add(ds.getKey());
                                                                 }
@@ -475,8 +455,8 @@ public class MisActivity extends AppCompatActivity {
                                                             }
                                                         }
                                                     } else {
-                                                        if (!comuna.equals("Comuna")) {
-                                                            if (mascota.getComuna().equals(comuna)) {
+                                                        if (!comunaB.equals("Comuna")) {
+                                                            if (mascota.getComuna().equals(comunaB)) {
                                                                 mascotaList.add(mascota);
                                                                 mas_key.add(ds.getKey());
                                                             }
@@ -485,9 +465,9 @@ public class MisActivity extends AppCompatActivity {
                                                             mas_key.add(ds.getKey());
                                                         }
                                                     }
-                                                } else if (tipo.equals("Tipo de Ave")) {
-                                                    if (!comuna.equals("Comuna")) {
-                                                        if (mascota.getComuna().equals(comuna)) {
+                                                } else if (tipoB.equals("Tipo de Ave")) {
+                                                    if (!comunaB.equals("Comuna")) {
+                                                        if (mascota.getComuna().equals(comunaB)) {
                                                             mascotaList.add(mascota);
                                                             mas_key.add(ds.getKey());
                                                         }
@@ -499,8 +479,8 @@ public class MisActivity extends AppCompatActivity {
                                                 }
                                             }
                                         }else{
-                                            if (!comuna.equals("Comuna")) {
-                                                if (mascota.getComuna().equals(comuna)) {
+                                            if (!comunaB.equals("Comuna")) {
+                                                if (mascota.getComuna().equals(comunaB)) {
                                                     mascotaList.add(mascota);
                                                     mas_key.add(ds.getKey());
                                                 }
@@ -511,8 +491,8 @@ public class MisActivity extends AppCompatActivity {
                                         }
                                     }
                                 } else {
-                                    if (!comuna.equals("Comuna")) {
-                                        if (mascota.getComuna().equals(comuna)) {
+                                    if (!comunaB.equals("Comuna")) {
+                                        if (mascota.getComuna().equals(comunaB)) {
                                             mascotaList.add(mascota);
                                             mas_key.add(ds.getKey());
                                         }
@@ -537,6 +517,8 @@ public class MisActivity extends AppCompatActivity {
             });
 
         }
+
+
 
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override

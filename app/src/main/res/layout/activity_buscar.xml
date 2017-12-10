@@ -58,53 +58,37 @@
         android:orientation="vertical"
         android:weightSum="1">
 
+        <Switch
+            android:id="@+id/switch_sexo_b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.02" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.02"
+            android:text="Sexo" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.02"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView9"
+            <ToggleButton
+                android:id="@+id/sexo_bus"
+                style="@android:style/Widget.DeviceDefault.Button.Toggle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.53"
-                android:text="Sexo" />
-
-            <Switch
-                android:id="@+id/switch_sexo_b"
-                android:layout_width="78dp"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:layout_weight="0.02"
-            android:orientation="horizontal">
-
-            <Button
-
-                android:id="@+id/macho_b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:layout_weight="0.53"
                 android:background="@drawable/boton_redondo"
-                android:text="Macho"
-                android:textSize="10sp" />
-
-            <Button
-                android:id="@+id/hembra_b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.53"
-                android:background="@drawable/boton_red_gris"
-                android:text="Hembra"
-                android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textOff="Macho"
+                android:textOn="Hembra" />
 
         </LinearLayout>
+
     </LinearLayout>
 
     <View

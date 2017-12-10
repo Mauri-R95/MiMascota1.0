@@ -43,6 +43,7 @@ public class EditarCuentaActivity extends AppCompatActivity {
     private LinearLayout la_ubicacion, la_pass;
     private Button guardar_Edit;
     private FirebaseDatabase database;
+    private DatabaseReference reference;
     private String emailS ,key_user, imagen_nom;
     private Usuario usuario = new Usuario();
     private ProgressDialog dialog;
@@ -69,16 +70,14 @@ public class EditarCuentaActivity extends AppCompatActivity {
         la_pass = (LinearLayout)findViewById(R.id.la_pass_user);
         guardar_Edit = (Button)findViewById(R.id.guardar_edit_user);
         database = FirebaseDatabase.getInstance();
-        final DatabaseReference reference = database.getReference();
+        reference = database.getReference();
 
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        emailS = user.getEmail();
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             usuario = extras.getParcelable("usuario");
             key_user = extras.getString("user");
             if(extras.getString("1").equals("primero")){
-                imagen_nom = usuario.getImagenNom();
+                imagen_nom = usuario.getImagen_nom();
             }else{
                 imagen_nom = extras.getString("imagen_nom");
             }
@@ -96,6 +95,7 @@ public class EditarCuentaActivity extends AppCompatActivity {
             }
             nombre.setText(usuario.getNombre());
             telefono.setText(usuario.getTelefono());
+
         }
 
         //imagen
@@ -142,7 +142,7 @@ public class EditarCuentaActivity extends AppCompatActivity {
         guardar_Edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!usuario.getImagenNom().equals("sas.png")) {
+                if(!usuario.getImagen_nom().equals("sas.png")) {
                     if (!nombre.getText().toString().isEmpty()) {
                         usuario.setNombre(nombre.getText().toString());
                         if (!telefono.getText().toString().isEmpty()) {
@@ -152,13 +152,13 @@ public class EditarCuentaActivity extends AppCompatActivity {
                                 dialog.show();
                                 reference.child(FirebaseReference.ref_usuarios)
                                         .child(key_user).setValue(usuario);
-                                if(!usuario.getImagenNom().equals("sas.png") || !usuario.getImagenNom().equals(imagen_nom)){
+                                if(!usuario.getImagen_nom().equals("sas.png") || !usuario.getImagen_nom().equals(imagen_nom)){
                                     storage.child("usuarios").child(imagen_nom).delete();
                                 }
                                 dialog.dismiss();
                                 Toast.makeText(getApplicationContext(), "Datos cambiandos correctamente", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(EditarCuentaActivity.this, MiCuentaActivity.class);
-                                intent.putExtra("email", user.getEmail());
+                                intent.putExtra("email", usuario.getEmail());
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
                                 finish();
@@ -195,8 +195,8 @@ public class EditarCuentaActivity extends AppCompatActivity {
 
             StorageReference filePath = storage.child("usuarios").child(urif.getLastPathSegment());
             //publicar.setOn
-            if(!usuario.getImagenNom().equals("sas.png") && state_imagen && !usuario.getImagenNom().equals(imagen_nom)){
-                storage.child("usuarios").child(usuario.getImagenNom()).delete();
+            if(!usuario.getImagen_nom().equals("sas.png") && state_imagen && !usuario.getImagen_nom().equals(imagen_nom)){
+                storage.child("usuarios").child(usuario.getImagen_nom()).delete();
             }
             filePath.putFile(urif).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -204,7 +204,7 @@ public class EditarCuentaActivity extends AppCompatActivity {
                     state_imagen = true;
                     Toast.makeText(getApplicationContext(), "Se subio exitosamente", Toast.LENGTH_LONG).show();
                     Uri descargarFoto = taskSnapshot.getDownloadUrl();
-                    usuario.setImagenNom(urif.getLastPathSegment());
+                    usuario.setImagen_nom(urif.getLastPathSegment());
                     usuario.setImagen(String.valueOf(descargarFoto));
                     Glide.with(EditarCuentaActivity.this)
                             .load(descargarFoto) //cargar el link
@@ -222,8 +222,8 @@ public class EditarCuentaActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(!usuario.getImagenNom().equals("sas.png") || !usuario.getImagenNom().equals(imagen_nom)){
-            storage.child("usuarios").child(usuario.getImagenNom()).delete();
+        if(!usuario.getImagen_nom().equals("sas.png") || !usuario.getImagen_nom().equals(imagen_nom)){
+            storage.child("usuarios").child(usuario.getImagen_nom()).delete();
         }
         super.onBackPressed();
     }

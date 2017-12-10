@@ -14,20 +14,20 @@ public class Usuario implements Parcelable {
     String telefono;
     String comuna;
     String imagen;
-    String imagenNom;
+    String imagen_nom;
     String region;
 
     public Usuario() {
     }
 
-    public Usuario(String nombre, String email, String telefono, String comuna, String region, String imagen, String imagenNom) {
+    public Usuario(String nombre, String email, String telefono, String comuna, String region, String imagen, String imagen_nom) {
         this.nombre = nombre;
         this.email = email;
         this.telefono = telefono;
         this.comuna = comuna;
         this.region = region;
         this.imagen = imagen;
-        this.imagenNom = imagenNom;
+        this.imagen_nom = imagen_nom;
     }
 
     public String getComuna() {return comuna;}
@@ -62,9 +62,9 @@ public class Usuario implements Parcelable {
 
     public void setImagen(String imagen) {this.imagen = imagen;}
 
-    public String getImagenNom() {return imagenNom;}
+    public String getImagen_nom() {return imagen_nom;}
 
-    public void setImagenNom(String imagenNom) {this.imagenNom = imagenNom;}
+    public void setImagen_nom(String imagen_nom) {this.imagen_nom = imagen_nom;}
 
     public static Creator<Usuario> getCREATOR() {return CREATOR;}
 
@@ -78,7 +78,7 @@ public class Usuario implements Parcelable {
         telefono = in.readString();
         comuna = in.readString();
         imagen = in.readString();
-        imagenNom = in.readString();
+        imagen_nom = in.readString();
         region = in.readString();
     }
 
@@ -94,7 +94,7 @@ public class Usuario implements Parcelable {
         dest.writeString(telefono);
         dest.writeString(comuna);
         dest.writeString(imagen);
-        dest.writeString(imagenNom);
+        dest.writeString(imagen_nom);
         dest.writeString(region);
     }
     /**
