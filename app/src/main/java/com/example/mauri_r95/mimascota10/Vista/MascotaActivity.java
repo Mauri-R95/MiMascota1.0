@@ -2,7 +2,6 @@ package com.example.mauri_r95.mimascota10.Vista;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -87,7 +86,7 @@ public class MascotaActivity extends AppCompatActivity  {
 
         asignarVariables(mascota);
 
-        reference.child(FirebaseReference.ref_usuarios).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_USUARIOS).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -194,7 +193,7 @@ public class MascotaActivity extends AppCompatActivity  {
                 .into(foto);
         nombre.setText(mascota.getNombre());
         fecha.setText(mascota.getFecha());
-        fecha_nac.setText("fecha de nacimiento: "+ mascota.getFecha_nac());
+        fecha_nac.setText("fecha de nacimiento: "+ mascota.getFechaNac());
         comuna.setText(mascota.getComuna());
         if(mascota.getRaza().isEmpty()){
             tip_raz_T.setText("Tipo");

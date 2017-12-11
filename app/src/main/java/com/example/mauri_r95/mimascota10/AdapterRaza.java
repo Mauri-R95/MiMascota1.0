@@ -26,7 +26,9 @@ public class AdapterRaza extends RecyclerView.Adapter<AdapterRaza.RazaViewHolder
     List<Raza> razas;
     private View.OnClickListener listener;
 
-    public AdapterRaza(List<Raza> razas) {  this.razas = razas; }
+    public AdapterRaza(List<Raza> razas) {
+        this.razas = razas;
+    }
 
     @Override
     public RazaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -45,9 +47,14 @@ public class AdapterRaza extends RecyclerView.Adapter<AdapterRaza.RazaViewHolder
     }
 
     @Override
-    public int getItemCount() { return razas.size(); }
+    public int getItemCount() {
+        return razas.size();
+    }
 
-    public void setOnClickListener(View.OnClickListener listener){ this.listener = listener; }
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
     @Override
     public void onClick(View v) {
         if (listener != null){
@@ -69,11 +76,10 @@ public class AdapterRaza extends RecyclerView.Adapter<AdapterRaza.RazaViewHolder
         ImageView foto;
 
          RazaViewHolder(View itemView) {
-            super(itemView);
-
-            nombre = (TextView)itemView.findViewById(R.id.raza_item);
-            foto = (ImageView)itemView.findViewById(R.id.imagVet);
-        }
+             super(itemView);
+             nombre = (TextView) itemView.findViewById(R.id.raza_item);
+             foto = (ImageView) itemView.findViewById(R.id.imagVet);
+         }
         /**
          * Metodo para cargar imagen al ImageView
          * @param title direccion de la imagen de firebase

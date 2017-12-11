@@ -81,7 +81,7 @@ public class RegistrarActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         usuario = new Usuario(nombre[0],eMailS,"","","", "https://firebasestorage.googleapis.com/v0/b/mi-mascota-a6900.appspot.com/o/sas.png?alt=media&token=e6d94bf0-b2b3-4201-a68d-358993887c26", "sas.png");
-                                        reference.child(FirebaseReference.ref_usuarios).push().setValue(usuario);
+                                        reference.child(FirebaseReference.REF_USUARIOS).push().setValue(usuario);
                                         Intent intent = new Intent(RegistrarActivity.this, MainActivity.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         startActivity(intent);

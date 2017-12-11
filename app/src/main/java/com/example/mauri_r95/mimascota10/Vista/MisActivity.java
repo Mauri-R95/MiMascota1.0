@@ -62,7 +62,7 @@ public class MisActivity extends AppCompatActivity {
 
 
         if(activity.equals("Mis Mascotas")){
-            ref.child(FirebaseReference.ref_mis_mascotas).addValueEventListener(new ValueEventListener() {
+            ref.child(FirebaseReference.REF_MIS_MASCOTAS).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     mascotaList.removeAll(mascotaList);
@@ -80,7 +80,7 @@ public class MisActivity extends AppCompatActivity {
             });
 
         }else if(activity.equals("Mis Publicaciones")){
-            ref.child(FirebaseReference.ref_mascotas).addValueEventListener(new ValueEventListener() {
+            ref.child(FirebaseReference.REF_MASCOTAS).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     mascotaList.removeAll(mascotaList);
@@ -120,7 +120,7 @@ public class MisActivity extends AppCompatActivity {
             Log.i("comuna", comunaB);
 
 
-            ref.child(FirebaseReference.ref_mascotas).addValueEventListener(new ValueEventListener() {
+            ref.child(FirebaseReference.REF_MASCOTAS).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 

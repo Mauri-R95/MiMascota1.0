@@ -1,8 +1,5 @@
 package com.example.mauri_r95.mimascota10.Modelo;
 
-import android.content.Context;
-import android.widget.Toast;
-
 import com.example.mauri_r95.mimascota10.FirebaseReference;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,7 +33,7 @@ public class MainModel{
 
     public List<Mascota> inicializarMascotas(){
 
-        reference.child(FirebaseReference.ref_mascotas).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_MASCOTAS).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mMascotas.removeAll(mMascotas);
@@ -62,7 +59,7 @@ public class MainModel{
         return mMascotas;
     }
 
-    public List<String> getMas_key() {
+    public List<String> getMasKey() {
         return sMas_key;
     }
 

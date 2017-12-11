@@ -19,8 +19,6 @@ import com.example.mauri_r95.mimascota10.FirebaseReference;
 import com.example.mauri_r95.mimascota10.Modelo.Usuario;
 import com.example.mauri_r95.mimascota10.R;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -150,7 +148,7 @@ public class EditarCuentaActivity extends AppCompatActivity {
                             if (!ubicacion.getText().toString().equals("Ubicación")) {
                                 dialog.setMessage("Guardando Cambios...");
                                 dialog.show();
-                                reference.child(FirebaseReference.ref_usuarios)
+                                reference.child(FirebaseReference.REF_USUARIOS)
                                         .child(key_user).setValue(usuario);
                                 if(!usuario.getImagen_nom().equals("sas.png") || !usuario.getImagen_nom().equals(imagen_nom)){
                                     storage.child("usuarios").child(imagen_nom).delete();

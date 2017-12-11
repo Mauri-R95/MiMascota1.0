@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setAdapter(adapter);
         database = FirebaseDatabase.getInstance();
         reference= database.getReference();
-        reference.child(FirebaseReference.ref_mascotas).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_MASCOTAS).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mMascotas.removeAll(mMascotas);
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity
                     database = FirebaseDatabase.getInstance();
                     emailS = user.getEmail();
                     DatabaseReference reference= database.getReference();
-                    reference.child(FirebaseReference.ref_usuarios).addValueEventListener(new ValueEventListener() {
+                    reference.child(FirebaseReference.REF_USUARIOS).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             for (DataSnapshot ds : dataSnapshot.getChildren()) {

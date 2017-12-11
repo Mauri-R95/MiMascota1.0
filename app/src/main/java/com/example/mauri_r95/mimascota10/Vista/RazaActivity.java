@@ -59,7 +59,7 @@ public class RazaActivity extends AppCompatActivity {
              tipo = extras.getString("tipo");
         }
 
-        reference.child(FirebaseReference.ref_raza).child(tipo).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_RAZA).child(tipo).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 razas.removeAll(razas);

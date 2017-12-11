@@ -54,7 +54,7 @@ public class ComunaActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         String provincia = extras.getString("provincia");
-        reference.child(FirebaseReference.ref_comuna).child(provincia).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_COMUNA).child(provincia).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 comunas.removeAll(comunas);

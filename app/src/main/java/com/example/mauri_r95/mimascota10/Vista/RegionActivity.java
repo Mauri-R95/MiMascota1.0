@@ -51,7 +51,7 @@ public class RegionActivity extends AppCompatActivity {
         adapter = new AdapterSimple(this,regiones);
         recyclerView.setAdapter(adapter);
 
-        reference.child(FirebaseReference.ref_region).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_REGION).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 regiones.removeAll(regiones);

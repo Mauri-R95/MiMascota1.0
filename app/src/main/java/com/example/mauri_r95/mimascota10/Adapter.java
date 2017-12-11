@@ -87,14 +87,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MascotaViewHolder> imp
         ImageView foto, img_fav;
 
          public MascotaViewHolder(View itemView) {
-            super(itemView);
-            nombreT = (TextView)itemView.findViewById(R.id.nombre_item);
-            fechaComT = (TextView)itemView.findViewById(R.id.fecha_item);
-            categoriaT = (TextView)itemView.findViewById(R.id.categoria_item);
-            foto = (ImageView)itemView.findViewById(R.id.imagVet);
-            img_fav = (ImageView)itemView.findViewById(R.id.img_fav);
-
-        }
+             super(itemView);
+             nombreT = (TextView) itemView.findViewById(R.id.nombre_item);
+             fechaComT = (TextView) itemView.findViewById(R.id.fecha_item);
+             categoriaT = (TextView) itemView.findViewById(R.id.categoria_item);
+             foto = (ImageView) itemView.findViewById(R.id.imagVet);
+             img_fav = (ImageView) itemView.findViewById(R.id.img_fav);
+         }
 
         /**
          * Metodo para cargar imagen al ImageView

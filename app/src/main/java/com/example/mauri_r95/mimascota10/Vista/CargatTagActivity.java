@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mauri_r95.mimascota10.FirebaseReference;
@@ -44,7 +43,7 @@ public class CargatTagActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
         mascotaFound = new Mascota();
-        reference.child(FirebaseReference.ref_mascotas).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_MASCOTAS).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -104,7 +103,7 @@ public class CargatTagActivity extends AppCompatActivity {
         }
     }
 
-    public void verificarTagAgregada(Boolean findtagBool,String tag){
+    public void verificarTagAgregada(Boolean findtagBool, String tag){
         Bundle extras = getIntent().getExtras();
         String activity = extras.getString("activity");
         String segundo = extras.getString("1");

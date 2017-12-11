@@ -58,7 +58,9 @@ public class AdapterTamano extends RecyclerView.Adapter<AdapterTamano.TamanoView
     }
 
 
-    public void setOnClickListener(View.OnClickListener listener){this.listener = listener; }
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
     @Override
     public void onClick(View v) {
         if (listener != null){

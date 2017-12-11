@@ -51,7 +51,7 @@ public class TipoMascotaActivity extends AppCompatActivity {
         adapter = new AdapterSimple(this,tiposMascotas);
         recyclerView.setAdapter(adapter);
 
-        reference.child(FirebaseReference.ref_tipo_mascota).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_TIPO_MASCOTA).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 tiposMascotas.removeAll(tiposMascotas);

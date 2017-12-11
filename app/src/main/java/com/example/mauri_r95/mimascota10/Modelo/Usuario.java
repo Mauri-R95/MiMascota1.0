@@ -20,19 +20,23 @@ public class Usuario implements Parcelable {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String email, String telefono, String comuna, String region, String imagen, String imagen_nom) {
-        this.nombre = nombre;
-        this.email = email;
-        this.telefono = telefono;
-        this.comuna = comuna;
-        this.region = region;
-        this.imagen = imagen;
-        this.imagen_nom = imagen_nom;
+    public Usuario(String _nombre, String _email, String _telefono, String _comuna, String _region, String _imagen, String _imagen_nom) {
+        nombre = _nombre;
+        email = _email;
+        telefono = _telefono;
+        comuna = _comuna;
+        imagen = _comuna;
+        imagen_nom = _imagen_nom;
+        region = _region;
     }
 
-    public String getComuna() {return comuna;}
+    public String getComuna() {
+        return comuna;
+    }
 
-    public void setComuna(String comuna) {this.comuna = comuna;}
+    public void setComuna(String comuna) {
+        this.comuna = comuna;
+    }
 
     public String getNombre() {
         return nombre;
@@ -58,19 +62,33 @@ public class Usuario implements Parcelable {
         this.telefono = telefono;
     }
 
-    public String getImagen() {return imagen;}
+    public String getImagen() {
+        return imagen;
+    }
 
-    public void setImagen(String imagen) {this.imagen = imagen;}
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 
-    public String getImagen_nom() {return imagen_nom;}
+    public String getImagen_nom() {
+        return imagen_nom;
+    }
 
-    public void setImagen_nom(String imagen_nom) {this.imagen_nom = imagen_nom;}
+    public void setImagen_nom(String imagen_nom) {
+        this.imagen_nom = imagen_nom;
+    }
 
-    public static Creator<Usuario> getCREATOR() {return CREATOR;}
+    public static Creator<Usuario> getCREATOR() {
+        return CREATOR;
+    }
 
-    public String getRegion() {return region;}
+    public String getRegion() {
+        return region;
+    }
 
-    public void setRegion(String region) {this.region = region;}
+    public void setRegion(String region) {
+        this.region = region;
+    }
 
     protected Usuario(Parcel in) {
         nombre = in.readString();

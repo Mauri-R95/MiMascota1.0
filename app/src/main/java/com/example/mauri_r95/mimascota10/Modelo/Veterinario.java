@@ -22,15 +22,15 @@ public class Veterinario implements Parcelable, Comparable<Veterinario> {
     public Veterinario() {
     }
 
-    public Veterinario(String nombre, String telefono, String pagweb, String direccion, String email, String lat, String lng, int distancia) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.pagweb = pagweb;
-        this.direccion = direccion;
-        this.email = email;
-        this.lat = lat;
-        this.lng = lng;
-        this.distancia = distancia;
+    public Veterinario(String _nombre, String _telefono, String _pagweb, String _direccion, String _email, String _lat, String _lng, int _distancia) {
+        nombre = _nombre;
+        telefono = _telefono;
+        pagweb = _pagweb;
+        direccion = _direccion;
+        email = _email;
+        lat = _lat;
+        lng = _lng;
+        distancia = _distancia;
     }
 
     public String getNombre() {

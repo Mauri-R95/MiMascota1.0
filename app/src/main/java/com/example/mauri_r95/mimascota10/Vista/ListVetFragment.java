@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.mauri_r95.mimascota10.AdapterVet;
 import com.example.mauri_r95.mimascota10.FirebaseReference;
@@ -69,8 +68,8 @@ public class ListVetFragment extends Fragment {
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
      * @return A new instance of fragment ListVetFragment.
+     * TODO: Rename and change types and number of parameters
      */
-    // TODO: Rename and change types and number of parameters
     public static ListVetFragment newInstance(String param1, String param2) {
         ListVetFragment fragment = new ListVetFragment();
         Bundle args = new Bundle();
@@ -104,7 +103,7 @@ public class ListVetFragment extends Fragment {
         reference = database.getReference();
         here = new LatLng(ub.getLatitude(), ub.getLongitude());
         //here = new LatLng(-33.021469,-71.48585800000001 );
-        reference.child(FirebaseReference.ref_veterinarios).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_VETERINARIOS).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 veterinarios.removeAll(veterinarios);

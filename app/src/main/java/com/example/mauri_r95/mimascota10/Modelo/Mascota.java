@@ -47,19 +47,19 @@ public class Mascota implements Parcelable {
         this.imagen = imagen;
     }
 
-    public String getImagen_nom() {
+    public String getImagenNom() {
         return imagen_nom;
     }
 
-    public void setImagen_nom(String imagen_nom) {
+    public void setImagenNom(String imagen_nom) {
         this.imagen_nom = imagen_nom;
     }
 
-    public String getFecha_nac() {
+    public String getFechaNac() {
         return fecha_nac;
     }
 
-    public void setFecha_nac(String fecha_nac) {
+    public void setFechaNac(String fecha_nac) {
         this.fecha_nac = fecha_nac;
     }
 

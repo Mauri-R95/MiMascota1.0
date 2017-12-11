@@ -50,7 +50,7 @@ public class TamanoActivity extends AppCompatActivity {
         }else{
             tipo = extras.getString("tipo");
         }
-        reference.child(FirebaseReference.ref_tamano).child(tipo).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_TAMANO).child(tipo).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 tamanos.removeAll(tamanos);

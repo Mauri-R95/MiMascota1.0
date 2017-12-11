@@ -5,17 +5,17 @@ public class FirebaseReference {
     /**
      * Referencias mas usadas
      */
-    final public static String ref_usuarios = "usuarios";
-    final public static String ref_mascotas = "mascotas";
-    final public static String ref_categoria = "categoria";
-    final public static String ref_tipo_mascota = "tipo de mascota";
-    final public static String ref_tamano= "tamano";
-    final public static String ref_comuna= "comuna";
-    final public static String ref_provincia= "provincia";
-    final public static String ref_raza= "raza";
-    final public static String ref_region= "region";
-    final public static String ref_mis_mascotas = "Mis Mascotas";
-    final public static String ref_veterinarios = "veterinarios";
-    final public static String ref_mas_pend = "mascotas_pend";
+    final public static String REF_USUARIOS = "usuarios";
+    final public static String REF_MASCOTAS = "mascotas";
+    final public static String REF_CATEGORIA = "categoria";
+    final public static String REF_TIPO_MASCOTA = "tipo de mascota";
+    final public static String REF_TAMANO = "tamano";
+    final public static String REF_COMUNA = "comuna";
+    final public static String REF_PROVINCIA = "provincia";
+    final public static String REF_RAZA = "raza";
+    final public static String REF_REGION = "region";
+    final public static String REF_MIS_MASCOTAS = "Mis Mascotas";
+    final public static String REF_VETERINARIOS = "veterinarios";
+    final public static String REF_MAS_PEND = "mascotas_pend";
 
 }

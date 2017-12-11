@@ -3,13 +3,12 @@ package com.example.mauri_r95.mimascota10.Vista;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
+
 import java.util.Calendar;
 import java.util.Locale;
 //import android.icu.util.Calendar;
 import java.text.SimpleDateFormat;
-import android.icu.util.GregorianCalendar;
-import android.icu.util.TimeZone;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -125,7 +124,7 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
                             //.centerCrop() //ajustar foto
                             .into(foto);
                 }
-                mascota.getImagen_nom();
+                mascota.getImagenNom();
                 nombre.setText(mascota.getNombre());
                 categoria.setText(mascota.getCategoria());
                 if(mascota.getSexo().equals("Macho")) {
@@ -134,7 +133,7 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
                     sexo.setChecked(true);
                 }
                 tip_mas.setText(mascota.getTipo());
-                fecha_nac.setText(mascota.getFecha_nac());
+                fecha_nac.setText(mascota.getFechaNac());
 
                 raza.setText(mascota.getRaza());
                 tamano.setText(mascota.getTamano());
@@ -142,7 +141,7 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
                 desc.setText(mascota.getDescripcion());
                 if (extras.getString("1").equals("primero")) {
                     cat_get = mascota.getCategoria();
-                    imagen_nom_res = mascota.getImagen_nom();
+                    imagen_nom_res = mascota.getImagenNom();
                 } else {
                     cat_get = extras.getString("cat_get");
                     imagen_nom_res = extras.getString("imagen_nom");
@@ -157,12 +156,12 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
 
             } else {
                 mascota.setImagen("");
-                mascota.setImagen_nom("");
+                mascota.setImagenNom("");
                 mascota.setNombre("");
                 mascota.setCategoria(categoria.getText().toString());
                 mascota.setSexo(sexo.getTextOff().toString());
                 mascota.setTipo(tip_mas.getText().toString());
-                mascota.setFecha_nac(fecha_nac.getText().toString());
+                mascota.setFechaNac(fecha_nac.getText().toString());
                 mascota.setRaza(raza.getText().toString());
                 mascota.setTamano(tamano.getText().toString());
                 mascota.setComuna(comuna.getText().toString());
@@ -371,8 +370,8 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
                                     if (!mascota.getTamano().equals("Tamaño")) {
 
                                         //FECHA DE NACIMIENTO
-                                        if (mascota.getFecha_nac().equals("Fecha de nacimiento")) {
-                                            mascota.setFecha_nac("");
+                                        if (mascota.getFechaNac().equals("Fecha de nacimiento")) {
+                                            mascota.setFechaNac("");
                                         }
                                         //COMUNA
                                         if (!mascota.getComuna().equals("Comuna")) {
@@ -386,30 +385,30 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
                                                 if (!activity.equals("main")) { //editar mascota de una publicacion
                                                     stateActivity = true; // si es true se devuelve a mi cuenta
                                                     if (!cat_get.equals("Mis Mascotas")) { //si no cambio de categoria
-                                                        reference.child(FirebaseReference.ref_mascotas).child(mas_key).setValue(mascota); //actualiza los datos
+                                                        reference.child(FirebaseReference.REF_MASCOTAS).child(mas_key).setValue(mascota); //actualiza los datos
                                                     } else { //si cambio de categoria
                                                         stateCambio = true; //verifica si cambio de seccion para devolverse a menu o a mascota
-                                                        reference.child(FirebaseReference.ref_mascotas).push().setValue(mascota); //la añade a mis mascotas
-                                                        reference.child(FirebaseReference.ref_mis_mascotas).child(mas_key).removeValue(); // la borra de las publicaciones
+                                                        reference.child(FirebaseReference.REF_MASCOTAS).push().setValue(mascota); //la añade a mis mascotas
+                                                        reference.child(FirebaseReference.REF_MIS_MASCOTAS).child(mas_key).removeValue(); // la borra de las publicaciones
                                                     }
 
                                                 } else { //si es agregar publicacion
                                                     stateActivity = false; //se devuelve al menu menu principal
-                                                    reference.child(FirebaseReference.ref_mas_pend).push().setValue(mascota);
+                                                    reference.child(FirebaseReference.REF_MAS_PEND).push().setValue(mascota);
                                                 }
                                             } else { //si extran a mis mascotas
                                                 if (!activity.equals("main")) { //si es seccion mis mascotas
                                                     stateActivity = true; // se devuelve a mi cuenta
                                                     if (cat_get.equals("Mis Mascotas")) { //si las categorias son iguales
-                                                        reference.child(FirebaseReference.ref_mis_mascotas).child(mas_key).setValue(mascota); //se actualiza
+                                                        reference.child(FirebaseReference.REF_MIS_MASCOTAS).child(mas_key).setValue(mascota); //se actualiza
                                                     } else { //si son diferentes
                                                         stateCambio = true; //verifica si cambio de seccion para devolverse a menu o a mascota
-                                                        reference.child(FirebaseReference.ref_mis_mascotas).push().setValue(mascota); //agrrega a mis mascota
-                                                        reference.child(FirebaseReference.ref_mascotas).child(mas_key).removeValue(); //borra de publicaciones
+                                                        reference.child(FirebaseReference.REF_MIS_MASCOTAS).push().setValue(mascota); //agrrega a mis mascota
+                                                        reference.child(FirebaseReference.REF_MASCOTAS).child(mas_key).removeValue(); //borra de publicaciones
                                                     }
                                                 } else { //si es agregar mascotas
                                                     stateActivity = false;
-                                                    reference.child(FirebaseReference.ref_mas_pend).push().setValue(mascota);
+                                                    reference.child(FirebaseReference.REF_MAS_PEND).push().setValue(mascota);
                                                 }
 
 
@@ -490,12 +489,12 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
 
 
             if(!activity.equals("main")){ //si se viene de editar mascota
-                if(!mascota.getImagen_nom().equals(imagen_nom_res) && state_imagen){ //si se tiene imagen
-                    mStorage.child("mascotas").child(mascota.getImagen_nom()).delete(); //borrar la imagen actual para actualizar a la nueva verificando
+                if(!mascota.getImagenNom().equals(imagen_nom_res) && state_imagen){ //si se tiene imagen
+                    mStorage.child("mascotas").child(mascota.getImagenNom()).delete(); //borrar la imagen actual para actualizar a la nueva verificando
                 }
             }else{ //si se viene de agregar mascota
-                if(!mascota.getImagen_nom().isEmpty() && state_imagen){ //verifica si la imagen no esta vacia y si ya subio una imagen anterior
-                    mStorage.child("mascotas").child(mascota.getImagen_nom()).delete(); //borrar la actual para actualizar a la nueva
+                if(!mascota.getImagenNom().isEmpty() && state_imagen){ //verifica si la imagen no esta vacia y si ya subio una imagen anterior
+                    mStorage.child("mascotas").child(mascota.getImagenNom()).delete(); //borrar la actual para actualizar a la nueva
                 }
             }
             filePath.putFile(urif).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -504,7 +503,7 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
                     state_imagen = true;
                     Toast.makeText(PubAnuncioActivity.this, "Se subio exitosamente", Toast.LENGTH_LONG).show();
                     Uri descargarFoto = taskSnapshot.getDownloadUrl();
-                    mascota.setImagen_nom(urif.getLastPathSegment());
+                    mascota.setImagenNom(urif.getLastPathSegment());
                     mascota.setImagen(String.valueOf(descargarFoto));
                     Glide.with(PubAnuncioActivity.this)
                             .load(descargarFoto) //cargar el link
@@ -567,7 +566,7 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
                     if(state_nac){
                         Toast.makeText(PubAnuncioActivity.this, "Fecha supera a la actual", Toast.LENGTH_LONG).show();
                     }
-                        mascota.setFecha_nac(fecha_nac.getText().toString());
+                        mascota.setFechaNac(fecha_nac.getText().toString());
 
                 }
             }
@@ -601,11 +600,11 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
                         public void onClick(DialogInterface dialog, int which) {
                             database = FirebaseDatabase.getInstance();
                             DatabaseReference reference = database.getReference();
-                            mStorage.child("mascotas").child(mascota.getImagen_nom()).delete();
+                            mStorage.child("mascotas").child(mascota.getImagenNom()).delete();
                             if(activity.equals("Mis Mascotas")){
-                                reference.child(FirebaseReference.ref_mis_mascotas).child(mas_key).removeValue();
+                                reference.child(FirebaseReference.REF_MIS_MASCOTAS).child(mas_key).removeValue();
                             }else{
-                                reference.child(FirebaseReference.ref_mascotas).child(mas_key).removeValue();
+                                reference.child(FirebaseReference.REF_MASCOTAS).child(mas_key).removeValue();
                             }
                             Intent intent = new Intent(PubAnuncioActivity.this, MisActivity.class);
                             intent.putExtra("email", userS);
@@ -635,12 +634,12 @@ public class PubAnuncioActivity extends AppCompatActivity implements View.OnClic
     public void onBackPressed() {
         Bundle extras = getIntent().getExtras();
         if(!activity.equals("main")){
-            if(!mascota.getImagen_nom().equals(imagen_nom_res)){
-                mStorage.child("mascotas").child(mascota.getImagen_nom()).delete();
+            if(!mascota.getImagenNom().equals(imagen_nom_res)){
+                mStorage.child("mascotas").child(mascota.getImagenNom()).delete();
             }
         }else{
             if(state_imagen){
-                mStorage.child("mascotas").child(mascota.getImagen_nom()).delete();
+                mStorage.child("mascotas").child(mascota.getImagenNom()).delete();
             }
         }
         super.onBackPressed();

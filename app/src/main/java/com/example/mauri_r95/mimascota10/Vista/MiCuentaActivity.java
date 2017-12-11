@@ -59,7 +59,7 @@ public class MiCuentaActivity extends AppCompatActivity {
         //INICIALIZAR USUARIO
         database = FirebaseDatabase.getInstance();
         DatabaseReference reference = database.getReference();
-        reference.child(FirebaseReference.ref_usuarios).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_USUARIOS).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -89,7 +89,7 @@ public class MiCuentaActivity extends AppCompatActivity {
             }
         });
         //extrae la cantidad de mascotas que tiene en mis mascotas el usuario
-        reference.child(FirebaseReference.ref_mis_mascotas).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_MIS_MASCOTAS).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 num_mas = 0;
@@ -105,7 +105,7 @@ public class MiCuentaActivity extends AppCompatActivity {
         });
 
         //extrae la cantidad de mascotas que tiene en mis publicaciones el usuario
-        reference.child(FirebaseReference.ref_mascotas).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_MASCOTAS).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 num_publ = 0;

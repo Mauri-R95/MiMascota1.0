@@ -54,7 +54,7 @@ public class ProvinciaActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String region = extras.getString("region");
 
-        reference.child(FirebaseReference.ref_provincia).child(region).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_PROVINCIA).child(region).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 provincias.removeAll(provincias);

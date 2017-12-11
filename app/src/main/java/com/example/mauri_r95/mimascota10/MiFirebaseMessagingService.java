@@ -8,8 +8,8 @@ import com.google.firebase.messaging.RemoteMessage;
 
 /**
  * Created by Mauri_R95 on 08-12-2017.
+ * Recibe mensaje
  */
-//Recibe mensaje
 public class MiFirebaseMessagingService extends FirebaseMessagingService{
 
     public static final String TAG = "NOTICIAS";

@@ -33,6 +33,9 @@ public class Ubicacion implements LocationListener {
         getLocation();
     }
 
+    /**
+     *  Obtener Localización GPS
+     */
     private void getLocation() {
         if (networkOn) {
             if (ActivityCompat.checkSelfPermission(ctx, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(ctx, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

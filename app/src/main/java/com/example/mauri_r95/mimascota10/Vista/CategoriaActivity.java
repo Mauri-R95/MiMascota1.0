@@ -54,7 +54,7 @@ public class CategoriaActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         activity = extras.getString("activity");
 
-        reference.child(FirebaseReference.ref_categoria).addValueEventListener(new ValueEventListener() {
+        reference.child(FirebaseReference.REF_CATEGORIA).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 categorias.removeAll(categorias);
