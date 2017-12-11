@@ -156,7 +156,7 @@ public class EditarCuentaActivity extends AppCompatActivity {
                                     storage.child("usuarios").child(imagen_nom).delete();
                                 }
                                 dialog.dismiss();
-                                Toast.makeText(getApplicationContext(), "Datos cambiandos correctamente", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Datos cambiados correctamente", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(EditarCuentaActivity.this, MiCuentaActivity.class);
                                 intent.putExtra("email", usuario.getEmail());
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

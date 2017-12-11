@@ -10,7 +10,6 @@ import android.view.View;
 
 import com.example.mauri_r95.mimascota10.Adapter;
 import com.example.mauri_r95.mimascota10.FirebaseReference;
-import com.example.mauri_r95.mimascota10.Modelo.Favoritos;
 import com.example.mauri_r95.mimascota10.Modelo.Mascota;
 import com.example.mauri_r95.mimascota10.R;
 import com.google.firebase.database.DataSnapshot;

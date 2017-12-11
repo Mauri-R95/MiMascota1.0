@@ -10,19 +10,19 @@ import android.os.Parcelable;
 
 public class Mascota implements Parcelable {
     String imagen; //
-    String imagen_nom;
-    String nombre;//
+    String imagen_nom; //
+    String nombre; //
     String fecha; //
-    String fecha_nac;
-    String comuna; //
+    String fecha_nac; //
+    String comuna;  //
     String tipo; //
-    String categoria;//
+    String categoria;
     String sexo; //
-    String tamano; //
-    String descripcion; //
-    String raza;//
+    String tamano;
+    String descripcion;
+    String raza; //
     String usuario; //
-    String tag;
+    String tag; //
 
     public Mascota() {
     }

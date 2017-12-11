@@ -100,7 +100,7 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".Vista.EscanearTagActivity"
-            android:label="string/escanear_tag"/>
+            android:label="@string/escanear_tag"/>
         <activity android:name=".Vista.CargatTagActivity" />
         <activity android:name=".Vista.InfoVetActivity"
             android:label="@string/info_vet"/>

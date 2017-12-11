@@ -9,10 +9,10 @@ import android.os.Parcelable;
 
 public class Usuario implements Parcelable {
 
-    String nombre;
-    String email;
-    String telefono;
-    String comuna;
+    String nombre; //
+    String email; //
+    String telefono; //
+    String comuna; //
     String imagen;
     String imagen_nom;
     String region;

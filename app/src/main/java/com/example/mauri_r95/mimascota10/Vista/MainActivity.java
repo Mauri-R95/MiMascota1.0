@@ -24,9 +24,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mauri_r95.mimascota10.Adapter;
-import com.example.mauri_r95.mimascota10.Controlador.MainControlador;
 import com.example.mauri_r95.mimascota10.FirebaseReference;
-import com.example.mauri_r95.mimascota10.Modelo.MainModel;
 import com.example.mauri_r95.mimascota10.Modelo.Mascota;
 import com.example.mauri_r95.mimascota10.Modelo.Usuario;
 import com.example.mauri_r95.mimascota10.R;
